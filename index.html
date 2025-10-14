@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HafizPro - Master the Quran, One Ayah at a Time</title>
+    <title>Hafiz Pro - Master the Quran, One Ayah at a Time</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -25,8 +25,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="icon" type="image/png" href="assets/img/logo.png" />
-    <link rel="apple-touch-icon" href="assets/img/logo.png" />
+    <link rel="icon" type="image/png" href="assets/img/icon-logo.png" />
+    <link rel="apple-touch-icon" href="assets/img/icon-logo.png" />
     <style>
       /* Custom Animations */
       @keyframes fadeInUp {
@@ -168,6 +168,30 @@
           ></span>
         </div>
       </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-200"
+      >
+        <div class="px-4 py-4 space-y-4">
+          <a
+            href="#features"
+            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
+            >Features</a
+          >
+          <a
+            href="#screenshots"
+            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
+            >Screenshots</a
+          >
+          <a
+            href="#support"
+            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
+            >Support</a
+          >
+        </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
@@ -179,7 +203,7 @@
       >
         <div class="text-center lg:text-left">
           <div
-            class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm mb-6 backdrop-blur-md"
+            class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm mt-5 md:mt-0 mb-6 backdrop-blur-md"
           >
             <i class="fas fa-star text-yellow-400"></i>
             <span>Latest Version: 25.10.14</span>
@@ -861,12 +885,11 @@
       // Mobile menu toggle
       document.addEventListener("DOMContentLoaded", function () {
         const mobileToggle = document.getElementById("mobile-menu-toggle");
-        const navMenu = document.querySelector(".hidden.md\\:flex");
+        const mobileMenu = document.getElementById("mobile-menu");
 
-        if (mobileToggle) {
+        if (mobileToggle && mobileMenu) {
           mobileToggle.addEventListener("click", function () {
-            // Toggle mobile menu (you can implement this based on your needs)
-            console.log("Mobile menu clicked");
+            mobileMenu.classList.toggle("hidden");
           });
         }
 
