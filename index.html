@@ -1,995 +1,1212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hafiz Pro - Master the Quran, One Ayah at a Time</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              inter: ["Inter", "sans-serif"],
-              amiri: ["Amiri", "serif"],
-            },
-          },
-        },
-      };
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <title>Hafiz Pro — Master the Quran, one Ayah at a time</title>
+    <meta
+      name="description"
+      content="Hafiz Pro helps you memorize the Quran with focused testing modes, recitations, and a calm, modern experience."
+    />
+
+    <link rel="icon" type="image/png" href="icons/icon-192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="assets/img/icon-logo.png" />
-    <link rel="apple-touch-icon" href="assets/img/icon-logo.png" />
+
     <style>
-      /* Custom Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      :root {
+        --bg0: #05070f;
+        --bg1: #0b1220;
+        --card: rgba(255, 255, 255, 0.06);
+        --card2: rgba(255, 255, 255, 0.09);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.55);
+
+        --emerald: #22c55e;
+        --emerald2: #16a34a;
+        --teal: #2dd4bf;
+        --gold: #fbbf24;
+
+        --shadow: 0 20px 80px rgba(0, 0, 0, 0.55);
+        --radius: 18px;
       }
 
-      .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-        opacity: 0;
+      * {
+        box-sizing: border-box;
       }
 
-      .animation-delay-200 {
-        animation-delay: 0.2s;
+      html,
+      body {
+        height: 100%;
       }
 
-      .animation-delay-400 {
-        animation-delay: 0.4s;
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 700px at 20% 20%,
+            rgba(34, 197, 94, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 600px at 75% 30%,
+            rgba(45, 212, 191, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1000px 700px at 55% 85%,
+            rgba(251, 191, 36, 0.10),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        overflow-x: hidden;
       }
 
-      .animation-delay-600 {
-        animation-delay: 0.6s;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      .animation-delay-800 {
-        animation-delay: 0.8s;
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px;
       }
 
-      /* Smooth scrolling */
-      html {
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(5, 7, 15, 0.55);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: radial-gradient(
+            18px 18px at 25% 25%,
+            rgba(255, 255, 255, 0.22),
+            transparent 60%
+          ),
+          linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(45, 212, 191, 0.8));
+        box-shadow: 0 14px 40px rgba(34, 197, 94, 0.18);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand-title {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .brand-title strong {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+      }
+
+      .brand-title span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav a {
+        padding: 8px 10px;
+        border-radius: 12px;
+      }
+
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        transition: transform 0.15s ease, background 0.15s ease,
+          border-color 0.15s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .btn-primary {
+        border-color: rgba(34, 197, 94, 0.45);
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(45, 212, 191, 0.85));
+        color: #04100a;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 1), rgba(45, 212, 191, 0.95));
+      }
+
+      .hero {
+        padding: 56px 0 34px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 44px;
+        align-items: center;
+      }
+
+      .hero-grid > :first-child {
+        padding-right: 10px;
+      }
+
+      .hero-grid > :last-child {
+        justify-self: end;
+      }
+
+      .hero-card {
+        max-width: 520px;
+        width: 100%;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .badge b {
+        color: var(--text);
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: 46px;
+        line-height: 1.08;
+        letter-spacing: -0.8px;
+      }
+
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+        max-width: 52ch;
+      }
+
+      .arabic {
+        margin-top: 14px;
+        font-family: Amiri, serif;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.9;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .meta-row {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+        color: var(--muted2);
+        font-size: 13px;
+      }
+
+      .meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0.12));
+        border: 1px solid rgba(255, 255, 255, 0.20);
+      }
+
+      .hero-card {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.04)
+          );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(
+            600px 260px at 30% 0%,
+            rgba(34, 197, 94, 0.22),
+            transparent 55%
+          ),
+          radial-gradient(
+            650px 260px at 90% 30%,
+            rgba(45, 212, 191, 0.16),
+            transparent 55%
+          );
+        pointer-events: none;
+      }
+
+      .hero-card-inner {
+        position: relative;
+        padding: 18px;
+      }
+
+      .screen {
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+
+      .screen-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 12px;
+      }
+
+      .screen-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .screen-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .screen-body {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+      }
+
+      .chip strong {
+        color: #fff;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .feature {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 16px;
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+      }
+
+      .feature h3 {
+        margin: 8px 0 6px;
+        font-size: 15px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
+        display: grid;
+        place-items: center;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 16px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -0.2px;
+      }
+
+      .section-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .quote {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 18px;
+      }
+
+      .quote .ref {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 12px;
+        color: var(--muted2);
+        margin-bottom: 8px;
+      }
+
+      .quote .a {
+        font-family: Amiri, serif;
+        font-size: 20px;
+        line-height: 1.9;
+        margin: 0 0 6px;
+        color: rgba(255, 255, 255, 0.90);
+      }
+
+      .quote .t {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .footer {
+        padding: 26px 0 42px;
+        color: var(--muted2);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .small {
+        font-size: 13px;
+      }
+
+      .links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .links a {
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .links a:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .shots-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 10px 0 12px;
+      }
+
+      .shots-help {
+        margin: 0;
+        font-size: 13px;
+        color: var(--muted2);
+      }
+
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.15s ease, background 0.15s ease,
+          border-color 0.15s ease;
+        cursor: pointer;
+      }
+
+      .icon-btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .screenshots-track {
+        display: flex;
+        gap: 14px;
+        overflow-x: auto;
+        padding: 6px 2px 10px;
+        scroll-snap-type: x mandatory;
         scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
       }
 
-      /* Mobile optimizations */
-      @media (max-width: 640px) {
-        .hero-title {
-          font-size: 2.5rem !important;
+      .screenshots-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .screenshots-slide {
+        flex: 0 0 auto;
+        width: 86%;
+        scroll-snap-align: center;
+      }
+
+      .shot-card {
+        height: min(62vh, 560px);
+        padding: 10px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+      }
+
+      .shot-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: calc(var(--radius) - 8px);
+        background: rgba(255, 255, 255, 0.02);
+        display: block;
+      }
+
+      .dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .dot-btn {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+
+      .dot-btn.active {
+        background: rgba(45, 212, 191, 0.95);
+        border-color: rgba(45, 212, 191, 0.55);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(10px);
+      }
+
+      .lightbox.open {
+        display: flex;
+      }
+
+      .lightbox-card {
+        position: relative;
+        width: min(1100px, 96vw);
+        height: min(86vh, 820px);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .lightbox-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: rgba(0, 0, 0, 0.25);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        font-size: 20px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      @media (max-width: 940px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
         }
-
-        .hero-description {
-          font-size: 1rem !important;
+        h1 {
+          font-size: 38px;
         }
-
-        .hero-buttons {
-          flex-direction: column;
-          align-items: center;
+        .grid-3 {
+          grid-template-columns: 1fr;
         }
-
-        .hero-stats {
-          justify-content: center;
-          gap: 1.5rem;
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          display: none;
         }
       }
 
-      /* Enhanced hover effects */
-      .feature-card,
-      .community-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      @media (max-width: 420px) {
+        h1 {
+          font-size: 32px;
+        }
       }
 
-      .feature-card:hover,
-      .community-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      @media (min-width: 640px) {
+        .screenshots-slide {
+          width: 48%;
+        }
+        .shot-card {
+          height: min(56vh, 520px);
+        }
       }
 
-      /* Loading animation */
-      .loading {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease-out;
+      @media (min-width: 1024px) {
+        .screenshots-slide {
+          width: 32%;
+        }
+        .shot-card {
+          height: min(52vh, 500px);
+        }
       }
 
-      .loaded {
-        opacity: 1;
-        transform: translateY(0);
+      /* Decorative subtle pattern */
+      .pattern {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: radial-gradient(
+            circle at 1px 1px,
+            rgba(255, 255, 255, 0.10) 1px,
+            transparent 0
+          );
+        background-size: 18px 18px;
+        mask-image: radial-gradient(circle at 25% 20%, #000 10%, transparent 60%);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
     </style>
   </head>
-  <body class="font-inter">
-    <!-- Navigation -->
-    <nav
-      class="sticky top-0 left-0 right-0 bg-white backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300"
-    >
-      <div
-        class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16"
-      >
-        <div class="flex items-center gap-2 text-2xl font-bold text-amber-600">
-          <a href="/" class="flex items-center pt-3">
-            <img
-              src="assets/img/image-icon.png"
-              alt="HafizPro Logo"
-              width="80"
-              class="object-contain brightness-110 contrast-120"
-            />
-            <img
-              src="assets/img/hafizpro-logo.png"
-              alt="HafizPro Logo"
-              width="120"
-              class="object-contain brightness-110 contrast-120"
-            />
+
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="landing.html" aria-label="Hafiz Pro">
+          <div class="logo" aria-hidden="true">
+            <img src="icons/icon-192.png" alt="" />
+          </div>
+          <div class="brand-title">
+            <strong>Hafiz Pro</strong>
+            <span>Master the Quran, one Ayah at a time</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#how">How it works</a>
+          <a href="#why">Why Hafiz Pro</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer" title="Open the app">
+            Open App
+          </a>
+          <a
+            class="btn"
+            href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Download on Android"
+          >
+            Android
+          </a>
+          <a class="btn btn-primary" href="#get-started" title="Get started">
+            Get Started
           </a>
         </div>
-        <div class="hidden md:flex gap-6 lg:gap-8">
-          <a
-            href="#features"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Features</a
-          >
-          <a
-            href="#screenshots"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Screenshots</a
-          >
-          <a
-            href="#support"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Support</a
-          >
-          <a
-            href="https://app.hafizpro.com/"
-            target="_blank"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Web App</a
-          >
-        </div>
-        <div
-          class="md:hidden flex flex-col cursor-pointer group"
-          id="mobile-menu-toggle"
-        >
-          <span
-            class="w-6 h-0.5 bg-amber-700 mb-1 transition-all duration-300 group-hover:bg-amber-600"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-amber-700 mb-1 transition-all duration-300 group-hover:bg-amber-600"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-amber-700 transition-all duration-300 group-hover:bg-amber-600"
-          ></span>
-        </div>
       </div>
+    </header>
 
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden bg-white border-t border-gray-200"
-      >
-        <div class="px-4 py-4 space-y-4">
-          <a
-            href="#features"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Features</a
-          >
-          <a
-            href="#screenshots"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Screenshots</a
-          >
-          <a
-            href="#support"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Support</a
-          >
-          <a
-            href="https://app.hafizpro.com/"
-            target="_blank"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Web App</a
-          >
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="badge">
+                <b>New</b>
+                <span>Focused memorization. Beautiful, modern. Built with care.</span>
+              </div>
+
+              <h1>
+                A calm, modern way to
+                <span style="color: rgba(45, 212, 191, 0.95)">memorize</span>
+                the Quran.
+              </h1>
+
+              <p class="sub">
+                Hafiz Pro helps you build consistency with gentle structure:
+                test modes, clean reading, recitations, and progress that feels
+                effortless.
+              </p>
+
+              <p class="arabic" dir="rtl" lang="ar">
+                وَقُل رَّبِّ زِدْنِي عِلْمًا
+                <span style="color: rgba(255, 255, 255, 0.55)">—</span>
+                <span style="color: rgba(255, 255, 255, 0.70)">سورة طه</span>
+              </p>
+
+              <div class="cta-row" id="get-started">
+                <a class="btn btn-primary" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Launch Hafiz Pro</a>
+                <a class="btn" href="#features">See features</a>
+                <a class="btn" href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test" target="_blank" rel="noopener noreferrer">Android</a>
+              </div>
+
+              <div class="meta-row">
+                <div class="meta-item"><span class="dot"></span> Web + Mobile</div>
+                <div class="meta-item"><span class="dot"></span> Verse-by-verse audio</div>
+                <div class="meta-item"><span class="dot"></span> Distraction-free</div>
+              </div>
+            </div>
+
+            <div class="hero-card" aria-label="Preview">
+              <div class="pattern"></div>
+              <div class="hero-card-inner">
+                <div class="screen">
+                  <div class="screen-top">
+                    <div class="screen-dots" aria-hidden="true">
+                      <span class="screen-dot"></span>
+                      <span class="screen-dot"></span>
+                      <span class="screen-dot"></span>
+                    </div>
+                    <div>Preview</div>
+                  </div>
+                  <div class="screen-body">
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Test by Surah</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— focused recall</span>
+                    </div>
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Test by Juz</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— steady practice</span>
+                    </div>
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Recitation</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— audio that guides you</span>
+                    </div>
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Clean UI</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— modern & calming</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid-3" style="margin-top: 14px">
+                  <div class="feature">
+                    <div class="icon" aria-hidden="true">📖</div>
+                    <h3>Memorization-first</h3>
+                    <p>Designed for recall and repetition, not endless scrolling.</p>
+                  </div>
+                  <div class="feature">
+                    <div class="icon" aria-hidden="true">🎧</div>
+                    <h3>Reciters</h3>
+                    <p>Listen verse-by-verse or surah audio depending on reciter.</p>
+                  </div>
+                  <div class="feature">
+                    <div class="icon" aria-hidden="true">🌙</div>
+                    <h3>Dark mode</h3>
+                    <p>Comfortable day or night—built to reduce visual strain.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section class="section" id="screenshots">
+        <div class="container">
+          <div class="section-title">
+            <h2>Screenshots</h2>
+            <p>See the app in action.</p>
+          </div>
+
+          <div class="shots-head">
+            <p class="shots-help">Swipe to browse</p>
+            <div class="actions" style="gap: 8px">
+              <button
+                id="screenshots-prev"
+                type="button"
+                class="icon-btn"
+                aria-label="Previous screenshot"
+              >
+                <span aria-hidden="true">‹</span>
+              </button>
+              <button
+                id="screenshots-next"
+                type="button"
+                class="icon-btn"
+                aria-label="Next screenshot"
+              >
+                <span aria-hidden="true">›</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="screenshots-track" class="screenshots-track" aria-label="Screenshot gallery">
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/0.png" alt="HafizPro Screenshot" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/1.png" alt="HafizPro Main Menu" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/2.png" alt="HafizPro Reciter Selection" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/3.png" alt="HafizPro Settings" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/4.png" alt="HafizPro Progress Tracking" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/5.png" alt="HafizPro Audio Controls" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/6.png" alt="HafizPro Testing Interface" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/7.png" alt="HafizPro Testing Interface" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/8.png" alt="HafizPro Testing Interface" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/9.png" alt="HafizPro Screenshot" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/10.png" alt="HafizPro Screenshot" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/11.png" alt="HafizPro Screenshot" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/12.png" alt="HafizPro Screenshot" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/13.png" alt="HafizPro Screenshot" /></div></div>
+            <div class="screenshots-slide"><div class="shot-card"><img src="assets/screenshots/14.png" alt="HafizPro Screenshot" /></div></div>
+          </div>
+
+          <div id="screenshots-dots" class="dots" aria-label="Screenshot gallery navigation"></div>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-title">
+            <h2>Features</h2>
+            <p>Core tools for focused Hifz practice and calm consistency.</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="feature">
+              <div class="icon" aria-hidden="true">🧠</div>
+              <h3>Quran memorization testing</h3>
+              <p>Interactive testing designed to help you recall and complete verses.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">🧩</div>
+              <h3>Multiple test modes</h3>
+              <p>Test by Surah, test by Juz, or random verse testing across the Quran.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">🎧</div>
+              <h3>Audio-based learning</h3>
+              <p>High-quality recitation with multiple reciters selection.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">⏯️</div>
+              <h3>Playback controls</h3>
+              <p>Play / pause, seek, speed control, and loop / repeat options.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">🌙</div>
+              <h3>Background playback</h3>
+              <p>Continue listening while the app is in the background (where supported).</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">📍</div>
+              <h3>Progress & continuity</h3>
+              <p>Save and continue from last read position with “Last read” quick access.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">⚙️</div>
+              <h3>Settings & personalization</h3>
+              <p>Reciter selection, autoplay, preferences, and other behavior controls.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">ع</div>
+              <h3>Modern UI + Arabic typography</h3>
+              <p>Clean, modern design with attention to Arabic readability.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">📱</div>
+              <h3>Responsive experience</h3>
+              <p>Works across different screen sizes (mobile + web/desktop).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="container">
+          <div class="section-title">
+            <h2>How it works</h2>
+            <p>Simple steps. Consistency is the win.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="feature">
+              <div class="icon" aria-hidden="true">1</div>
+              <h3>Choose your mode</h3>
+              <p>Pick Surah testing or Juz testing depending on your plan.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">2</div>
+              <h3>Listen & recall</h3>
+              <p>Use recitation to set the pace, then recall the next verses.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">3</div>
+              <h3>Repeat gently</h3>
+              <p>Short, repeatable sessions that build momentum over time.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">4</div>
+              <h3>Stay consistent</h3>
+              <p>Make it part of your day. Small wins add up.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="container">
+          <div class="section-title">
+            <h2>Why Hafiz Pro</h2>
+            <p>A modern experience with a Quranic spirit.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="quote">
+              <div class="ref" dir="rtl" lang="ar">الإسراء ١٧:٩</div>
+              <p class="a" dir="rtl" lang="ar">
+                إِنَّ هَـٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ
+              </p>
+              <p class="t">
+                “Indeed, this Quran guides to that which is most suitable.”
+              </p>
+            </div>
+            <div class="quote">
+              <div class="ref" dir="rtl" lang="ar">المزمل ٧٣:٤</div>
+              <p class="a" dir="rtl" lang="ar">
+                وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا
+              </p>
+              <p class="t">
+                “And recite the Quran with measured recitation.”
+              </p>
+            </div>
+          </div>
+
+          <div class="cta-row" style="margin-top: 18px">
+            <a class="btn btn-primary" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Open the app</a>
+            <a class="btn" href="#get-started">Get started</a>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test" target="_blank" rel="noopener noreferrer">Android</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div class="small">
+            © <span id="year"></span> Hafiz Pro. Built with care.
+          </div>
+          <div class="links">
+            <a href="#features">Features</a>
+            <a href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test" target="_blank" rel="noopener noreferrer">Android</a>
+            <a href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Web app</a>
+            <a href="#how">How it works</a>
+            <a href="#why">Why</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+      <div class="lightbox-card" id="lightbox-card">
+        <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close preview">×</button>
+        <img id="lightbox-img" class="lightbox-img" alt="Screenshot preview" />
       </div>
-    </nav>
+    </div>
 
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 text-white relative overflow-hidden flex items-center transition-all duration-1000 ease-in-out"
-    >
-      <div
-        class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10"
-      >
-        <div class="text-center lg:text-left">
-          <div
-            class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm mt-5 md:mt-0 mb-6 backdrop-blur-md"
-          >
-            <i class="fas fa-star text-yellow-400"></i>
-            <span>Latest Version: 25.10.14</span>
-          </div>
-
-          <h1
-            class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in-up"
-          >
-            Master the Quran,
-            <span
-              class="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent"
-              >One Ayah at a Time</span
-            >
-          </h1>
-
-          <p
-            class="text-lg sm:text-xl opacity-90 mb-8 leading-relaxed animate-fade-in-up animation-delay-200"
-          >
-            A Flutter application designed to help Muslims test and improve
-            their Quran memorization skills through interactive audio-based
-            testing.
-          </p>
-
-          <div
-            class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-12 animate-fade-in-up animation-delay-400"
-          >
-            <a
-              href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
-              target="_blank"
-              class="inline-flex items-center gap-2 bg-white text-emerald-600 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <i class="fab fa-android"></i>
-              Download Android
-            </a>
-            <a
-              href="#"
-              onclick="alert('Coming Soon')"
-              class="inline-flex items-center gap-2 bg-white/20 text-white border-2 border-white/30 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base backdrop-blur-md hover:bg-white/30 transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <i class="fab fa-apple"></i>
-              Download iOS
-            </a>
-            <a
-              href="https://app.hafizpro.com/"
-              target="_blank"
-              class="inline-flex items-center gap-2 bg-white/20 text-white border-2 border-white/30 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base backdrop-blur-md hover:bg-white/30 transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <i class="fas fa-globe"></i>
-              Web App
-            </a>
-          </div>
-
-          <div
-            class="flex flex-wrap gap-6 sm:gap-8 justify-center lg:justify-start animate-fade-in-up animation-delay-600"
-          >
-            <div class="text-center">
-              <span
-                class="block text-3xl font-bold text-amber-400 counter"
-                data-target="20"
-                >0</span
-              >
-              <span class="text-sm opacity-80">Reciters</span>
-            </div>
-            <div class="text-center">
-              <span
-                class="block text-3xl font-bold text-amber-400 counter"
-                data-target="114"
-                >0</span
-              >
-              <span class="text-sm opacity-80">Surahs</span>
-            </div>
-            <div class="text-center">
-              <span
-                class="block text-3xl font-bold text-amber-400 counter"
-                data-target="6200"
-                >0</span
-              >
-              <span class="text-sm opacity-80">Verses</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex justify-center animate-fade-in-up animation-delay-800">
-          <div class="relative w-72 sm:w-80 h-[500px] sm:h-[600px] mx-auto">
-            <img
-              src="assets/screenshots/5.png"
-              alt="HafizPro App Screenshot"
-              class="w-full h-full object-cover rounded-[30px] shadow-2xl hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">🌟 Key Features</h2>
-          <p class="text-xl text-gray-600">
-            Everything you need to master Quran memorization
-          </p>
-        </div>
-
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-        >
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-brain text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Interactive Memorization Testing
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Random verse testing from any chapter
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Test by Surah, Juz, or random selection
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Progress tracking and analytics
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Smart memorization insights
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-volume-up text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Premium Audio Experience
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                20+ renowned reciters
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Multi-language support
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Advanced playback controls
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Background playback support
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-palette text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Beautiful User Experience
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Modern UI with Arabic typography
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Dark/Light theme support
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Responsive design
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Interactive user guide
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-cog text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Advanced Features
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Offline support
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Settings management
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Progress analytics
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Rating and feedback system
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="py-20">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            📱 Screenshots & Demo
-          </h2>
-          <p class="text-xl text-gray-600">See the app in action</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/1.png"
-                alt="HafizPro Main Menu"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/2.png"
-                alt="HafizPro Reciter Selection"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/3.png"
-                alt="HafizPro Settings"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/4.png"
-                alt="HafizPro Progress Tracking"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/5.png"
-                alt="HafizPro Audio Controls"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/6.png"
-                alt="HafizPro Testing Interface"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/7.png"
-                alt="HafizPro Testing Interface"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/8.png"
-                alt="HafizPro Testing Interface"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technical Section -->
-    <section class="py-20">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            🛠️ Technical Architecture
-          </h2>
-          <p class="text-xl text-gray-600">Built with modern technologies</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fab fa-flutter text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Flutter Framework
-            </h3>
-            <p class="text-gray-600 text-sm">
-              Modern UI framework for cross-platform development
-            </p>
-          </div>
-
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-music text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Advanced Audio
-            </h3>
-            <p class="text-gray-600 text-sm">
-              just_audio for premium audio playback experience
-            </p>
-          </div>
-
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-database text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Local Storage
-            </h3>
-            <p class="text-gray-600 text-sm">
-              shared_preferences for secure local data storage
-            </p>
-          </div>
-
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-test-tube text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Comprehensive Testing
-            </h3>
-            <p class="text-gray-600 text-sm">
-              Unit, widget, and integration tests for reliability
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Community Section -->
-    <section id="support" class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            🤝 Community & Support
-          </h2>
-          <p class="text-xl text-gray-600">Join our growing community</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fab fa-github text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              Open Source
-            </h3>
-            <p class="text-gray-600 mb-6">
-              Contribute to the project on GitHub
-            </p>
-            <a
-              href="https://github.com/bynalab/hafiz_test"
-              target="_blank"
-              class="inline-block bg-transparent text-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >View Source</a
-            >
-          </div>
-
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-bug text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              Report Issues
-            </h3>
-            <p class="text-gray-600 mb-6">Help us improve by reporting bugs</p>
-            <a
-              href="https://chat.whatsapp.com/EuF6FS3qL9TElJSNQBHEdp"
-              target="_blank"
-              class="inline-block bg-transparent text-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >Report Bug</a
-            >
-          </div>
-
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-lightbulb text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              Feature Requests
-            </h3>
-            <p class="text-gray-600 mb-6">
-              Suggest new features and improvements
-            </p>
-            <a
-              href="https://chat.whatsapp.com/EuF6FS3qL9TElJSNQBHEdp"
-              target="_blank"
-              class="inline-block bg-transparent text-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >Suggest Feature</a
-            >
-          </div>
-
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-users text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Community</h3>
-            <p class="text-gray-600 mb-6">Join discussions and get help</p>
-            <a
-              href="https://whatsapp.com/channel/0029Vb7FCqkFHWpx566byH0Y"
-              target="_blank"
-              class="inline-block bg-transparent text-emerald-600 border-2 border-emerald-600 px-4 py-2 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >Join Community</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div class="flex items-center mb-4">
-              <img
-                src="assets/img/image-icon.png"
-                alt="HafizPro Logo"
-                width="80"
-                class="object-contain brightness-110 contrast-120"
-              />
-              <img
-                src="assets/img/hafizpro-logo.png"
-                alt="HafizPro Logo"
-                width="120"
-                class="object-contain brightness-110 contrast-120"
-              />
-            </div>
-            <p class="text-gray-300 mb-4">
-              Master the Quran, One Ayah at a Time
-            </p>
-            <div class="flex gap-4">
-              <a
-                href="https://github.com/bynalab/hafiz_test"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://x.com/gethafizpro"
-                target="_blank"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Features</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Memorization Testing</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Audio Playback</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Progress Tracking</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Offline Support</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Support</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >FAQ</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Privacy Policy</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Download</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Android APK</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="alert('Coming Soon')"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >iOS App Store</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://app.hafizpro.com/"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Web App</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="border-t border-gray-800 pt-8 text-center">
-          <p class="text-gray-400 mb-2">
-            &copy; 2025 Hafiz Pro. All rights reserved.
-          </p>
-          <p class="text-gray-400">
-            Built with ❤️ by the
-            <a
-              href="https://x.com/byna001"
-              target="_blank"
-              class="text-gray-400 hover:text-white"
-              >Bynalab</a
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
     <script>
-      // Mobile menu toggle
-      document.addEventListener("DOMContentLoaded", function () {
-        const mobileToggle = document.getElementById("mobile-menu-toggle");
-        const mobileMenu = document.getElementById("mobile-menu");
+      document.getElementById('year').textContent = new Date().getFullYear();
 
-        if (mobileToggle && mobileMenu) {
-          mobileToggle.addEventListener("click", function () {
-            mobileMenu.classList.toggle("hidden");
+      const track = document.getElementById('screenshots-track');
+      const prevBtn = document.getElementById('screenshots-prev');
+      const nextBtn = document.getElementById('screenshots-next');
+      const dotsWrap = document.getElementById('screenshots-dots');
+
+      if (track) {
+        const slides = Array.from(track.querySelectorAll('.screenshots-slide'));
+
+        function getActiveIndex() {
+          if (!slides.length) return 0;
+          const trackRect = track.getBoundingClientRect();
+          const trackCenter = trackRect.left + trackRect.width / 2;
+          let bestIndex = 0;
+          let bestDistance = Infinity;
+
+          slides.forEach((slide, idx) => {
+            const r = slide.getBoundingClientRect();
+            const center = r.left + r.width / 2;
+            const d = Math.abs(center - trackCenter);
+            if (d < bestDistance) {
+              bestDistance = d;
+              bestIndex = idx;
+            }
+          });
+
+          return bestIndex;
+        }
+
+        function scrollToIndex(index) {
+          const target = slides[index];
+          if (!target) return;
+          target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+
+        function renderDots() {
+          if (!dotsWrap) return;
+          dotsWrap.innerHTML = '';
+          slides.forEach((_, idx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'dot-btn';
+            btn.setAttribute('aria-label', `Go to screenshot ${idx + 1}`);
+            btn.addEventListener('click', () => scrollToIndex(idx));
+            dotsWrap.appendChild(btn);
           });
         }
 
-        // Add loading animation
-        document.body.classList.add("loaded");
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("loaded");
-            }
+        function updateDots() {
+          if (!dotsWrap) return;
+          const active = getActiveIndex();
+          const dotButtons = Array.from(dotsWrap.querySelectorAll('button'));
+          dotButtons.forEach((b, i) => {
+            b.classList.toggle('active', i === active);
           });
-        }, observerOptions);
-
-        // Observe all cards for animation
-        document
-          .querySelectorAll(".feature-card, .community-card")
-          .forEach((card) => {
-            card.classList.add("loading");
-            observer.observe(card);
-          });
-
-        // Counter animation
-        function animateCounter(element, target, duration = 2000) {
-          let start = 0;
-          const increment = target / (duration / 16);
-          const isReciters = element
-            .closest(".text-center")
-            .querySelector(".text-sm")
-            .textContent.includes("Reciters");
-
-          const timer = setInterval(() => {
-            start += increment;
-            if (start >= target) {
-              const finalValue = target.toLocaleString();
-              element.textContent = isReciters ? finalValue + "+" : finalValue;
-              clearInterval(timer);
-            } else {
-              const currentValue = Math.floor(start);
-              element.textContent = isReciters
-                ? currentValue + "+"
-                : currentValue.toLocaleString();
-            }
-          }, 16);
         }
 
-        // Animate counters when they come into view
-        const counterObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const target = parseInt(entry.target.dataset.target);
-                animateCounter(entry.target, target);
-                counterObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.5 }
-        );
+        renderDots();
+        updateDots();
 
-        document.querySelectorAll(".counter").forEach((counter) => {
-          counterObserver.observe(counter);
+        if (prevBtn) {
+          prevBtn.addEventListener('click', () => {
+            const idx = getActiveIndex();
+            scrollToIndex(Math.max(0, idx - 1));
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', () => {
+            const idx = getActiveIndex();
+            scrollToIndex(Math.min(slides.length - 1, idx + 1));
+          });
+        }
+
+        track.addEventListener('scroll', () => {
+          window.requestAnimationFrame(updateDots);
         });
+
+        window.addEventListener('resize', () => {
+          window.requestAnimationFrame(updateDots);
+        });
+      }
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCard = document.getElementById('lightbox-card');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      function openLightbox(src, alt) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || 'Screenshot preview';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        if (!lightbox || !lightboxImg) return;
+        lightbox.classList.remove('open');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('#screenshots-track img').forEach((img) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openLightbox(img.src, img.alt));
+      });
+
+      if (lightbox) {
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox) closeLightbox();
+        });
+      }
+
+      if (lightboxCard) {
+        lightboxCard.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+
+      if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('open')) {
+          closeLightbox();
+        }
       });
     </script>
   </body>
