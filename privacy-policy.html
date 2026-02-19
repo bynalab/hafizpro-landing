@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <title>Privacy Policy - Hafiz Pro</title>
+    <meta name="description" content="Privacy Policy for Hafiz Pro - Master the Quran, one Ayah at a time." />
+    <link rel="icon" type="image/png" href="icons/icon-192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind = {
+        config: {
+          corePlugins: {
+            preflight: false,
+          },
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: [
+                  "Inter",
+                  "system-ui",
+                  "-apple-system",
+                  "Segoe UI",
+                  "Roboto",
+                  "Arial",
+                  "Apple Color Emoji",
+                  "Segoe UI Emoji",
+                ],
+                arabic: ["Amiri", "serif"],
+              },
+              colors: {
+                bg0: "#05070f",
+                bg1: "#0b1220",
+                card: "rgba(255, 255, 255, 0.06)",
+                card2: "rgba(255, 255, 255, 0.09)",
+                stroke: "rgba(255, 255, 255, 0.12)",
+                text: "rgba(255, 255, 255, 0.92)",
+                muted: "rgba(255, 255, 255, 0.68)",
+                muted2: "rgba(255, 255, 255, 0.55)",
+                emerald: "#22c55e",
+                emerald2: "#16a34a",
+                teal: "#2dd4bf",
+                gold: "#fbbf24",
+              },
+              borderRadius: {
+                xl2: "18px",
+              },
+              boxShadow: {
+                soft: "0 20px 80px rgba(0, 0, 0, 0.55)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      :root {
+        --bg0: #05070f;
+        --bg1: #0b1220;
+        --card: rgba(255, 255, 255, 0.06);
+        --card2: rgba(255, 255, 255, 0.09);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.55);
+
+        --emerald: #22c55e;
+        --emerald2: #16a34a;
+        --teal: #2dd4bf;
+        --gold: #fbbf24;
+
+        --shadow: 0 20px 80px rgba(0, 0, 0, 0.55);
+        --radius: 18px;
+        --link-color: #2dd4bf;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 700px at 20% 20%,
+            rgba(34, 197, 94, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 600px at 75% 30%,
+            rgba(45, 212, 191, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1000px 700px at 55% 85%,
+            rgba(251, 191, 36, 0.10),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s ease;
+      }
+
+      a:hover {
+        color: white;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        transition: transform 0.15s ease, background 0.15s ease,
+          border-color 0.15s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .btn-primary {
+        border-color: rgba(34, 197, 94, 0.45);
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(45, 212, 191, 0.85));
+        color: #04100a;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 1), rgba(45, 212, 191, 0.95));
+      }
+
+      .content-wrapper {
+        padding: 40px 0 60px;
+      }
+
+      .policy-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        font-size: 36px;
+        margin: 0 0 10px;
+        background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.7));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin: 40px 0 20px;
+        color: var(--text);
+        border-bottom: 1px solid var(--stroke);
+        padding-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin: 25px 0 15px;
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      p, ul {
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 16px;
+        margin-bottom: 1.2em;
+      }
+
+      ul {
+        padding-left: 20px;
+        list-style-type: disc;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+      
+      strong {
+        color: var(--text);
+      }
+
+      .update-date {
+        color: var(--muted2);
+        font-size: 14px;
+        margin-bottom: 30px;
+        display: block;
+      }
+
+      .content-link {
+        color: var(--teal);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+      }
+      
+      .content-link:hover {
+        color: var(--emerald);
+      }
+
+      .footer {
+        padding: 26px 0 42px;
+        color: var(--muted2);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: auto;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .small {
+        font-size: 13px;
+      }
+
+      .links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .links a {
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+        font-size: 13px; /* Ensure footer link text size matches index.html */
+      }
+
+      .links a:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      /* Essential accessibility enhancements */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <header class="topbar sticky top-0 z-10 backdrop-blur-[14px] bg-[rgba(5,7,15,0.55)] border-b border-white/[0.08]">
+      <div class="container topbar-inner max-w-[1120px] mx-auto px-5 flex items-center justify-between py-[14px] gap-4">
+        <a class="brand flex items-center gap-3" href="index.html" aria-label="Hafiz Pro">
+          <div class="logo w-9 h-9 rounded-xl border border-white/[0.14] shadow-[0_14px_40px_rgba(34,197,94,0.18)] grid place-items-center overflow-hidden bg-[radial-gradient(18px_18px_at_25%_25%,rgba(255,255,255,0.22),transparent_60%),linear-gradient(135deg,rgba(34,197,94,0.95),rgba(45,212,191,0.8))]" aria-hidden="true">
+            <img class="w-full h-full object-cover" src="icons/icon-192.png" alt="" />
+          </div>
+          <div class="brand-title flex flex-col leading-[1.1]">
+            <strong class="text-[14px] tracking-[0.2px]">Hafiz Pro</strong>
+            <span class="text-[12px] text-[rgba(255,255,255,0.68)]">Master the Quran, one Ayah at a time</span>
+          </div>
+        </a>
+
+        <div class="actions flex items-center gap-[10px]">
+          <a class="btn inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-white/[0.12] bg-white/[0.06] text-[rgba(255,255,255,0.92)] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-white/[0.09] hover:border-white/[0.18] transition" href="index.html">
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-grow content-wrapper">
+      <div class="container">
+        <article class="policy-content">
+          <header>
+            <h1>Privacy Policy</h1>
+            <time class="update-date" datetime="2026-02-19">Last updated: February 19, 2026</time>
+          </header>
+
+          <section aria-labelledby="intro-heading">
+            <h2 id="intro-heading">Introduction</h2>
+            <p>Welcome to <strong>Hafiz Pro</strong> ("we," "our," or "us"). We are committed to protecting your privacy and ensuring you have a positive experience on our website and while using our mobile application.</p>
+            <p>This Privacy Policy explains how we handle your information when you use our services. By using our app or website, you agree to the collection and use of information in accordance with this policy.</p>
+          </section>
+
+          <section aria-labelledby="info-heading">
+            <h2 id="info-heading">Information Collection and Use</h2>
+            
+            <h3 id="personal-data">Personal Data</h3>
+            <p>We believe in privacy by design. <strong>We do not collect any personal data</strong> that can identify you directly (such as your name, email address, or phone number) unless you voluntarily provide it to us (e.g., via support requests).</p>
+
+            <h3 id="usage-data">Usage Data & Analytics</h3>
+            <p>To improve our application, we may collect anonymous usage data. This data helps us understand how the app is used, identify bugs, and improve performance. This information is aggregated and does not identify individual users personally.</p>
+            
+            <h3 id="local-storage">Local Storage</h3>
+            <p>All your progress, settings, and downloaded content (such as audio files) are stored locally on your device. We do not sync this data to any cloud servers unless explicitly stated or if you use platform-specific backup features (like iCloud or Google Drive backups managed by your OS).</p>
+          </section>
+
+          <section aria-labelledby="permissions-heading">
+            <h2 id="permissions-heading">App Permissions</h2>
+            <p>The Hafiz Pro app requires certain permissions to function correctly:</p>
+            <ul>
+                <li><strong>Internet Access:</strong> Required to download audio recitations and check for app updates.</li>
+                <li><strong>Storage:</strong> Required to save downloaded audio files and your progress locally on your device so you can use the app offline.</li>
+                <li><strong>Audio/Microphone:</strong> Although primarily for listening, future features involving recitation testing may request microphone access. This data is processed locally and is not uploaded to our servers.</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="third-party-heading">
+            <h2 id="third-party-heading">Third-Party Services</h2>
+            <p>We use open-source libraries and APIs to provide content, such as:</p>
+            <ul>
+                <li><strong>Quran API:</strong> To fetch Quranic text and audio metadata.</li>
+                <li><strong>Audio Reciters:</strong> Audio files are streamed or downloaded from reputable Islamic sources.</li>
+            </ul>
+            <p>We do not share your data with third-party advertisers or marketing agencies.</p>
+          </section>
+
+          <section aria-labelledby="children-heading">
+            <h2 id="children-heading">Children's Privacy</h2>
+            <p>Our services are safe for all ages. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions.</p>
+          </section>
+
+          <section aria-labelledby="changes-heading">
+            <h2 id="changes-heading">Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.</p>
+          </section>
+
+          <section aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+            <ul>
+                <li>By visiting our GitHub Issues page: <a href="https://github.com/bynalab/hafiz_test/issues" class="content-link">https://github.com/bynalab/hafiz_test/issues</a></li>
+            </ul>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="small">
+          &copy; <span id="year"></span> Hafiz Pro. Built with care.
+        </div>
+        <div class="links">
+          <a href="index.html#features">Features</a>
+          <a href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test" target="_blank" rel="noopener noreferrer">Android</a>
+          <a href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Web app</a>
+          <a href="index.html#how">How it works</a>
+          <a href="index.html#why">Why</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

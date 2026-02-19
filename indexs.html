@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0F172A" />
+
+    <title>Hafiz Pro — Master the Quran, one Ayah at a time</title>
+    <meta
+      name="description"
+      content="Hafiz Pro helps you memorize the Quran with focused testing modes, recitations, and a calm, modern experience."
+    />
+
+    <link rel="icon" type="image/png" href="icons/icon-192.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg0: #05070f;
+        --bg1: #0b1220;
+        --card: rgba(255, 255, 255, 0.06);
+        --card2: rgba(255, 255, 255, 0.09);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --muted2: rgba(255, 255, 255, 0.55);
+
+        --emerald: #22c55e;
+        --emerald2: #16a34a;
+        --teal: #2dd4bf;
+        --gold: #fbbf24;
+
+        --shadow: 0 20px 80px rgba(0, 0, 0, 0.55);
+        --radius: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        background: radial-gradient(
+            1200px 700px at 20% 20%,
+            rgba(34, 197, 94, 0.16),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 600px at 75% 30%,
+            rgba(45, 212, 191, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            1000px 700px at 55% 85%,
+            rgba(251, 191, 36, 0.10),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), var(--bg1));
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(14px);
+        background: rgba(5, 7, 15, 0.55);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        gap: 16px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: radial-gradient(
+            18px 18px at 25% 25%,
+            rgba(255, 255, 255, 0.22),
+            transparent 60%
+          ),
+          linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(45, 212, 191, 0.8));
+        box-shadow: 0 14px 40px rgba(34, 197, 94, 0.18);
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand-title {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+      }
+
+      .brand-title strong {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+      }
+
+      .brand-title span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav a {
+        padding: 8px 10px;
+        border-radius: 12px;
+      }
+
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        transition: transform 0.15s ease, background 0.15s ease,
+          border-color 0.15s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .btn-primary {
+        border-color: rgba(34, 197, 94, 0.45);
+        background: linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(45, 212, 191, 0.85));
+        color: #04100a;
+      }
+
+      .btn-primary:hover {
+        background: linear-gradient(135deg, rgba(34, 197, 94, 1), rgba(45, 212, 191, 0.95));
+      }
+
+      .hero {
+        padding: 56px 0 34px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 28px;
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .badge b {
+        color: var(--text);
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: 46px;
+        line-height: 1.08;
+        letter-spacing: -0.8px;
+      }
+
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+        max-width: 52ch;
+      }
+
+      .arabic {
+        margin-top: 14px;
+        font-family: Amiri, serif;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.9;
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .meta-row {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+        color: var(--muted2);
+        font-size: 13px;
+      }
+
+      .meta-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 30%, #fff, rgba(255, 255, 255, 0.12));
+        border: 1px solid rgba(255, 255, 255, 0.20);
+      }
+
+      .hero-card {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.04)
+          );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background: radial-gradient(
+            600px 260px at 30% 0%,
+            rgba(34, 197, 94, 0.22),
+            transparent 55%
+          ),
+          radial-gradient(
+            650px 260px at 90% 30%,
+            rgba(45, 212, 191, 0.16),
+            transparent 55%
+          );
+        pointer-events: none;
+      }
+
+      .hero-card-inner {
+        position: relative;
+        padding: 18px;
+      }
+
+      .screen {
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+
+      .screen-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.70);
+        font-size: 12px;
+      }
+
+      .screen-dots {
+        display: flex;
+        gap: 6px;
+      }
+
+      .screen-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .screen-body {
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+      }
+
+      .chip strong {
+        color: #fff;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .feature {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 16px;
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+      }
+
+      .feature h3 {
+        margin: 8px 0 6px;
+        font-size: 15px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
+        display: grid;
+        place-items: center;
+      }
+
+      .section {
+        padding: 44px 0;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 16px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: -0.2px;
+      }
+
+      .section-title p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .quote {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 18px;
+      }
+
+      .quote .a {
+        font-family: Amiri, serif;
+        font-size: 20px;
+        line-height: 1.9;
+        margin: 0 0 6px;
+        color: rgba(255, 255, 255, 0.90);
+      }
+
+      .quote .t {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .footer {
+        padding: 26px 0 42px;
+        color: var(--muted2);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .small {
+        font-size: 13px;
+      }
+
+      .links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .links a {
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .links a:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      @media (max-width: 940px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 38px;
+        }
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+        .nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 420px) {
+        h1 {
+          font-size: 32px;
+        }
+      }
+
+      /* Decorative subtle pattern */
+      .pattern {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.35;
+        background-image: radial-gradient(
+            circle at 1px 1px,
+            rgba(255, 255, 255, 0.10) 1px,
+            transparent 0
+          );
+        background-size: 18px 18px;
+        mask-image: radial-gradient(circle at 25% 20%, #000 10%, transparent 60%);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="landing.html" aria-label="Hafiz Pro">
+          <div class="logo" aria-hidden="true">
+            <img src="icons/icon-192.png" alt="" />
+          </div>
+          <div class="brand-title">
+            <strong>Hafiz Pro</strong>
+            <span>Master the Quran, one Ayah at a time</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#why">Why Hafiz Pro</a>
+        </nav>
+
+        <div class="actions">
+          <a class="btn" href="./" title="Open the app">
+            Open App
+          </a>
+          <a class="btn btn-primary" href="#get-started" title="Get started">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <div>
+              <div class="badge">
+                <b>New</b>
+                <span>Focused memorization. Beautiful, modern. Built with care.</span>
+              </div>
+
+              <h1>
+                A calm, modern way to
+                <span style="color: rgba(45, 212, 191, 0.95)">memorize</span>
+                the Quran.
+              </h1>
+
+              <p class="sub">
+                Hafiz Pro helps you build consistency with gentle structure:
+                test modes, clean reading, recitations, and progress that feels
+                effortless.
+              </p>
+
+              <p class="arabic" dir="rtl" lang="ar">
+                وَقُل رَّبِّ زِدْنِي عِلْمًا
+                <span style="color: rgba(255, 255, 255, 0.55)">—</span>
+                <span style="color: rgba(255, 255, 255, 0.70)">سورة طه</span>
+              </p>
+
+              <div class="cta-row" id="get-started">
+                <a class="btn btn-primary" href="./">Launch Hafiz Pro</a>
+                <a class="btn" href="#features">See features</a>
+              </div>
+
+              <div class="meta-row">
+                <div class="meta-item"><span class="dot"></span> Web + Mobile</div>
+                <div class="meta-item"><span class="dot"></span> Verse-by-verse audio</div>
+                <div class="meta-item"><span class="dot"></span> Distraction-free</div>
+              </div>
+            </div>
+
+            <div class="hero-card" aria-label="Preview">
+              <div class="pattern"></div>
+              <div class="hero-card-inner">
+                <div class="screen">
+                  <div class="screen-top">
+                    <div class="screen-dots" aria-hidden="true">
+                      <span class="screen-dot"></span>
+                      <span class="screen-dot"></span>
+                      <span class="screen-dot"></span>
+                    </div>
+                    <div>Preview</div>
+                  </div>
+                  <div class="screen-body">
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Test by Surah</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— focused recall</span>
+                    </div>
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Test by Juz</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— steady practice</span>
+                    </div>
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Recitation</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— audio that guides you</span>
+                    </div>
+                    <div class="chip">
+                      <span class="dot" aria-hidden="true"></span>
+                      <strong>Clean UI</strong>
+                      <span style="color: rgba(255, 255, 255, 0.6)">— modern & calming</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid-3" style="margin-top: 14px">
+                  <div class="feature">
+                    <div class="icon" aria-hidden="true">📖</div>
+                    <h3>Memorization-first</h3>
+                    <p>Designed for recall and repetition, not endless scrolling.</p>
+                  </div>
+                  <div class="feature">
+                    <div class="icon" aria-hidden="true">🎧</div>
+                    <h3>Reciters</h3>
+                    <p>Listen verse-by-verse or surah audio depending on reciter.</p>
+                  </div>
+                  <div class="feature">
+                    <div class="icon" aria-hidden="true">🌙</div>
+                    <h3>Dark mode</h3>
+                    <p>Comfortable day or night—built to reduce visual strain.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="container">
+          <div class="section-title">
+            <h2>Features</h2>
+            <p>Everything you need for focused, consistent practice.</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="feature">
+              <div class="icon" aria-hidden="true">✅</div>
+              <h3>Testing modes</h3>
+              <p>Practice by Surah or by Juz with a flow that keeps you moving.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">🧭</div>
+              <h3>Smart navigation</h3>
+              <p>Jump to where you want and keep your sessions intentional.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">🔊</div>
+              <h3>Audio support</h3>
+              <p>Recitation integration to reinforce rhythm and pronunciation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="container">
+          <div class="section-title">
+            <h2>How it works</h2>
+            <p>Simple steps. Consistency is the win.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="feature">
+              <div class="icon" aria-hidden="true">1</div>
+              <h3>Choose your mode</h3>
+              <p>Pick Surah testing or Juz testing depending on your plan.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">2</div>
+              <h3>Listen & recall</h3>
+              <p>Use recitation to set the pace, then recall the next verses.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">3</div>
+              <h3>Repeat gently</h3>
+              <p>Short, repeatable sessions that build momentum over time.</p>
+            </div>
+            <div class="feature">
+              <div class="icon" aria-hidden="true">4</div>
+              <h3>Stay consistent</h3>
+              <p>Make it part of your day. Small wins add up.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="container">
+          <div class="section-title">
+            <h2>Why Hafiz Pro</h2>
+            <p>A modern experience with a Quranic spirit.</p>
+          </div>
+
+          <div class="two-col">
+            <div class="quote">
+              <p class="a" dir="rtl" lang="ar">
+                إِنَّ هَـٰذَا الْقُرْآنَ يَهْدِي لِلَّتِي هِيَ أَقْوَمُ
+              </p>
+              <p class="t">
+                “Indeed, this Quran guides to that which is most suitable.”
+              </p>
+            </div>
+            <div class="quote">
+              <p class="a" dir="rtl" lang="ar">
+                وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا
+              </p>
+              <p class="t">
+                “And recite the Quran with measured recitation.”
+              </p>
+            </div>
+          </div>
+
+          <div class="cta-row" style="margin-top: 18px">
+            <a class="btn btn-primary" href="./">Open the app</a>
+            <a class="btn" href="#get-started">Get started</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div class="small">
+            © <span id="year"></span> Hafiz Pro. Built with care.
+          </div>
+          <div class="links">
+            <a href="#features">Features</a>
+            <a href="#how">How it works</a>
+            <a href="#why">Why</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

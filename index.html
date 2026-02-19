@@ -20,6 +20,54 @@
       rel="stylesheet"
     />
 
+    <script>
+      tailwind = {
+        config: {
+          corePlugins: {
+            preflight: false,
+          },
+          theme: {
+            extend: {
+              fontFamily: {
+                sans: [
+                  "Inter",
+                  "system-ui",
+                  "-apple-system",
+                  "Segoe UI",
+                  "Roboto",
+                  "Arial",
+                  "Apple Color Emoji",
+                  "Segoe UI Emoji",
+                ],
+                arabic: ["Amiri", "serif"],
+              },
+              colors: {
+                bg0: "#05070f",
+                bg1: "#0b1220",
+                card: "rgba(255, 255, 255, 0.06)",
+                card2: "rgba(255, 255, 255, 0.09)",
+                stroke: "rgba(255, 255, 255, 0.12)",
+                text: "rgba(255, 255, 255, 0.92)",
+                muted: "rgba(255, 255, 255, 0.68)",
+                muted2: "rgba(255, 255, 255, 0.55)",
+                emerald: "#22c55e",
+                emerald2: "#16a34a",
+                teal: "#2dd4bf",
+                gold: "#fbbf24",
+              },
+              borderRadius: {
+                xl2: "18px",
+              },
+              boxShadow: {
+                soft: "0 20px 80px rgba(0, 0, 0, 0.55)",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
       :root {
         --bg0: #05070f;
@@ -82,86 +130,6 @@
         max-width: 1120px;
         margin: 0 auto;
         padding: 0 20px;
-      }
-
-      .topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(14px);
-        background: rgba(5, 7, 15, 0.55);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .topbar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px 0;
-        gap: 16px;
-      }
-
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .logo {
-        width: 36px;
-        height: 36px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.14);
-        background: radial-gradient(
-            18px 18px at 25% 25%,
-            rgba(255, 255, 255, 0.22),
-            transparent 60%
-          ),
-          linear-gradient(135deg, rgba(34, 197, 94, 0.95), rgba(45, 212, 191, 0.8));
-        box-shadow: 0 14px 40px rgba(34, 197, 94, 0.18);
-        display: grid;
-        place-items: center;
-        overflow: hidden;
-      }
-
-      .logo img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .brand-title {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.1;
-      }
-
-      .brand-title strong {
-        font-size: 14px;
-        letter-spacing: 0.2px;
-      }
-
-      .brand-title span {
-        font-size: 12px;
-        color: var(--muted);
-      }
-
-      .nav {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .nav a {
-        padding: 8px 10px;
-        border-radius: 12px;
-      }
-
-      .nav a:hover {
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--text);
       }
 
       .actions {
@@ -739,31 +707,31 @@
   </head>
 
   <body>
-    <header class="topbar">
-      <div class="container topbar-inner">
-        <a class="brand" href="landing.html" aria-label="Hafiz Pro">
-          <div class="logo" aria-hidden="true">
-            <img src="icons/icon-192.png" alt="" />
+    <header class="topbar sticky top-0 z-10 backdrop-blur-[14px] bg-[rgba(5,7,15,0.55)] border-b border-white/[0.08]">
+      <div class="container topbar-inner max-w-[1120px] mx-auto px-5 flex items-center justify-between py-[14px] gap-4">
+        <a class="brand flex items-center gap-3" href="landing.html" aria-label="Hafiz Pro">
+          <div class="logo w-9 h-9 rounded-xl border border-white/[0.14] shadow-[0_14px_40px_rgba(34,197,94,0.18)] grid place-items-center overflow-hidden bg-[radial-gradient(18px_18px_at_25%_25%,rgba(255,255,255,0.22),transparent_60%),linear-gradient(135deg,rgba(34,197,94,0.95),rgba(45,212,191,0.8))]" aria-hidden="true">
+            <img class="w-full h-full object-cover" src="icons/icon-192.png" alt="" />
           </div>
-          <div class="brand-title">
-            <strong>Hafiz Pro</strong>
-            <span>Master the Quran, one Ayah at a time</span>
+          <div class="brand-title flex flex-col leading-[1.1]">
+            <strong class="text-[14px] tracking-[0.2px]">Hafiz Pro</strong>
+            <span class="text-[12px] text-[rgba(255,255,255,0.68)]">Master the Quran, one Ayah at a time</span>
           </div>
         </a>
 
-        <nav class="nav" aria-label="Primary">
-          <a href="#features">Features</a>
-          <a href="#screenshots">Screenshots</a>
-          <a href="#how">How it works</a>
-          <a href="#why">Why Hafiz Pro</a>
+        <nav class="nav hidden [@media(min-width:940px)]:flex items-center gap-[18px] text-[14px] text-[rgba(255,255,255,0.68)]" aria-label="Primary">
+          <a class="px-[10px] py-2 rounded-xl hover:bg-white/[0.06] hover:text-[rgba(255,255,255,0.92)]" href="#features">Features</a>
+          <a class="px-[10px] py-2 rounded-xl hover:bg-white/[0.06] hover:text-[rgba(255,255,255,0.92)]" href="#screenshots">Screenshots</a>
+          <a class="px-[10px] py-2 rounded-xl hover:bg-white/[0.06] hover:text-[rgba(255,255,255,0.92)]" href="#how">How it works</a>
+          <a class="px-[10px] py-2 rounded-xl hover:bg-white/[0.06] hover:text-[rgba(255,255,255,0.92)]" href="#why">Why Hafiz Pro</a>
         </nav>
 
-        <div class="actions">
-          <a class="btn" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer" title="Open the app">
+        <div class="actions flex items-center gap-[10px]">
+          <a class="btn inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-white/[0.12] bg-white/[0.06] text-[rgba(255,255,255,0.92)] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-white/[0.09] hover:border-white/[0.18] transition" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer" title="Open the app">
             Open App
           </a>
           <a
-            class="btn"
+            class="btn inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-white/[0.12] bg-white/[0.06] text-[rgba(255,255,255,0.92)] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-white/[0.09] hover:border-white/[0.18] transition"
             href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
             target="_blank"
             rel="noopener noreferrer"
@@ -771,7 +739,7 @@
           >
             Android
           </a>
-          <a class="btn btn-primary" href="#get-started" title="Get started">
+          <a class="btn btn-primary inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-[rgba(34,197,94,0.45)] bg-[linear-gradient(135deg,rgba(34,197,94,0.95),rgba(45,212,191,0.85))] text-[#04100a] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-[linear-gradient(135deg,rgba(34,197,94,1),rgba(45,212,191,0.95))] transition" href="#get-started" title="Get started">
             Get Started
           </a>
         </div>
@@ -779,37 +747,37 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="container">
-          <div class="hero-grid">
+      <section class="hero py-14 pb-[34px]">
+        <div class="container max-w-[1120px] mx-auto px-5">
+          <div class="hero-grid grid grid-cols-1 [@media(min-width:940px)]:grid-cols-[1.1fr_0.9fr] gap-11 items-center">
             <div>
-              <div class="badge">
-                <b>New</b>
+              <div class="badge inline-flex items-center gap-[10px] px-3 py-2 rounded-full border border-white/[0.12] bg-white/[0.06] text-[rgba(255,255,255,0.68)] text-[13px]">
+                <b class="text-[rgba(255,255,255,0.92)]">New</b>
                 <span>Focused memorization. Beautiful, modern. Built with care.</span>
               </div>
 
-              <h1>
+              <h1 class="mt-[14px] mb-[10px] text-[46px] leading-[1.08] tracking-[-0.8px]">
                 A calm, modern way to
-                <span style="color: rgba(45, 212, 191, 0.95)">memorize</span>
+                <span class="text-[rgba(45,212,191,0.95)]">memorize</span>
                 the Quran.
               </h1>
 
-              <p class="sub">
+              <p class="sub mt-0 text-[16px] leading-[1.7] text-[rgba(255,255,255,0.68)] max-w-[52ch]">
                 Hafiz Pro helps you build consistency with gentle structure:
                 test modes, clean reading, recitations, and progress that feels
                 effortless.
               </p>
 
-              <p class="arabic" dir="rtl" lang="ar">
+              <p class="arabic mt-[14px] font-arabic text-[18px] leading-[1.9] text-[rgba(255,255,255,0.82)]" dir="rtl" lang="ar">
                 وَقُل رَّبِّ زِدْنِي عِلْمًا
-                <span style="color: rgba(255, 255, 255, 0.55)">—</span>
-                <span style="color: rgba(255, 255, 255, 0.70)">سورة طه</span>
+                <span class="text-white/[0.55]">—</span>
+                <span class="text-white/[0.70]">سورة طه</span>
               </p>
 
-              <div class="cta-row" id="get-started">
-                <a class="btn btn-primary" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Launch Hafiz Pro</a>
-                <a class="btn" href="#features">See features</a>
-                <a class="btn" href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test" target="_blank" rel="noopener noreferrer">Android</a>
+              <div class="cta-row flex flex-wrap gap-3 mt-5" id="get-started">
+                <a class="btn btn-primary inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-[rgba(34,197,94,0.45)] bg-[linear-gradient(135deg,rgba(34,197,94,0.95),rgba(45,212,191,0.85))] text-[#04100a] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-[linear-gradient(135deg,rgba(34,197,94,1),rgba(45,212,191,0.95))] transition" href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Launch Hafiz Pro</a>
+                <a class="btn inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-white/[0.12] bg-white/[0.06] text-[rgba(255,255,255,0.92)] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-white/[0.09] hover:border-white/[0.18] transition" href="#features">See features</a>
+                <a class="btn inline-flex items-center justify-center gap-[10px] px-[14px] py-[10px] rounded-[14px] border border-white/[0.12] bg-white/[0.06] text-[rgba(255,255,255,0.92)] font-semibold text-[14px] tracking-[0.2px] hover:-translate-y-[1px] hover:bg-white/[0.09] hover:border-white/[0.18] transition" href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test" target="_blank" rel="noopener noreferrer">Android</a>
               </div>
 
               <div class="meta-row">
@@ -1065,6 +1033,7 @@
             <a href="https://app.hafizpro.com/" target="_blank" rel="noopener noreferrer">Web app</a>
             <a href="#how">How it works</a>
             <a href="#why">Why</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
           </div>
         </div>
       </footer>
