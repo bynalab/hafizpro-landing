@@ -1,996 +1,1169 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hafiz Pro - Master the Quran, One Ayah at a Time</title>
+    <meta name="theme-color" content="#FFFFFF" id="meta-theme-color" />
+    <title>Hafiz Pro | Landing Page Preview</title>
+    <meta
+      name="description"
+      content="Hafiz Pro landing page preview inspired by the Flutter app theme, typography, and memorization-focused workflows."
+    />
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/app-icon-512.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600&family=Montserrat:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: ["class", '[data-theme="dark"]'],
         theme: {
           extend: {
             fontFamily: {
-              inter: ["Inter", "sans-serif"],
-              amiri: ["Amiri", "serif"],
+              sans: ["Inter", "system-ui", "sans-serif"],
+              display: ["Cairo", "Inter", "system-ui", "sans-serif"],
+              button: ["Montserrat", "Inter", "system-ui", "sans-serif"],
+              label: ["Manrope", "Inter", "system-ui", "sans-serif"],
+              arabic: ["Amiri", "serif"],
+            },
+            borderRadius: {
+              card: "12px",
+            },
+            boxShadow: {
+              card: "0 1px 3px rgba(0,0,0,0.06)",
+              lift: "0 10px 28px rgba(0,0,0,0.09)",
+              glow: "0 0 36px rgba(120,183,198,0.16)",
+            },
+            colors: {
+              primary: "var(--primary)",
+              secondary: "var(--secondary)",
+              tertiary: "var(--tertiary)",
+              surface: "var(--surface)",
+              scaffold: "var(--scaffold)",
+              onsurface: "var(--on-surface)",
+              outline: "var(--outline)",
+              brand: "var(--brand)",
+              primarycontainer: "var(--primary-container)",
+              elevated: "var(--elevated)",
+              sheet: "var(--sheet)",
+              strong: "var(--strong)",
+              muted: "var(--muted)",
+              hairline: "var(--hairline)",
+              segment: "var(--segment)",
+              segmentactive: "var(--segment-active)",
+              iconghost: "var(--icon-ghost)",
+              cardteal: "var(--card-teal)",
+              cardpeach: "var(--card-peach)",
+              cardpurple: "var(--card-purple)",
+              pillteal: "var(--pill-teal)",
+              readerteal: "#1D353B",
+              readercyan: "#78B7C6",
+              success: "#205B5F",
+              error: "#DC3545",
             },
           },
         },
       };
     </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="assets/img/icon-logo.png" />
-    <link rel="apple-touch-icon" href="assets/img/icon-logo.png" />
+
     <style>
-      /* Custom Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      :root,
+      html[data-theme="light"] {
+        color-scheme: light;
+        --brand: #004b40;
+        --primary: #046b5c;
+        --secondary: #4a635d;
+        --tertiary: #436278;
+        --primary-container: #a0f2df;
+        --surface: #ffffff;
+        --scaffold: #ffffff;
+        --on-surface: #222222;
+        --outline: #6f7976;
+        --elevated: #ffffff;
+        --sheet: #ffffff;
+        --strong: #111827;
+        --muted: #6b7280;
+        --hairline: #e5e7eb;
+        --segment: #f3f4f6;
+        --segment-active: #ffffff;
+        --icon-ghost: #f2f2f2;
+        --card-teal: #bfe7ea;
+        --card-peach: #f7cfc7;
+        --card-purple: #e6bdeb;
+        --pill-teal: #bfe7ea;
+        --header-wash: rgba(0, 75, 64, 0.04);
+        --hero-mid: #eefbf7;
+        --hero-grid: rgba(4, 107, 92, 0.06);
       }
 
-      .animate-fade-in-up {
-        animation: fadeInUp 0.8s ease-out forwards;
-        opacity: 0;
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --brand: #0bb38a;
+        --primary: #0bb38a;
+        --secondary: #4fd1b4;
+        --tertiary: #78b7c6;
+        --primary-container: #182d2d;
+        --surface: #121212;
+        --scaffold: #0e0e0e;
+        --on-surface: #e6e6e6;
+        --outline: #9ca3af;
+        --elevated: #171717;
+        --sheet: #1a1a1a;
+        --strong: #f3f4f6;
+        --muted: #9ca3af;
+        --hairline: #2a2a2a;
+        --segment: #141414;
+        --segment-active: #1e1e1e;
+        --icon-ghost: #1a1a1a;
+        --card-teal: #182d2d;
+        --card-peach: #2d1b18;
+        --card-purple: #2d182d;
+        --pill-teal: #2a6b6f;
+        --header-wash: rgba(11, 179, 138, 0.06);
+        --hero-mid: #101b18;
+        --hero-grid: rgba(120, 183, 198, 0.08);
       }
 
-      .animation-delay-200 {
-        animation-delay: 0.2s;
-      }
-
-      .animation-delay-400 {
-        animation-delay: 0.4s;
-      }
-
-      .animation-delay-600 {
-        animation-delay: 0.6s;
-      }
-
-      .animation-delay-800 {
-        animation-delay: 0.8s;
-      }
-
-      /* Smooth scrolling */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Mobile optimizations */
-      @media (max-width: 640px) {
-        .hero-title {
-          font-size: 2.5rem !important;
-        }
+      body {
+        margin: 0;
+        background: var(--scaffold);
+        color: var(--on-surface);
+        font-family: Inter, system-ui, sans-serif;
+        font-size: 15px;
+        line-height: 1.6;
+      }
 
-        .hero-description {
-          font-size: 1rem !important;
-        }
+      .theme-transition,
+      .theme-transition body,
+      .theme-transition header {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      }
 
-        .hero-buttons {
+      .hero-grid {
+        background-image:
+          linear-gradient(to right, transparent 0, transparent calc(100% - 1px), var(--hero-grid) calc(100% - 1px)),
+          linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), var(--hero-grid) calc(100% - 1px));
+        background-size: 36px 36px;
+        mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.15));
+      }
+
+      /* Fit hero in first viewport (below sticky header ~5rem) */
+      .hero-fold {
+        --hero-header-offset: 5rem;
+        box-sizing: border-box;
+        min-height: calc(100svh - var(--hero-header-offset));
+        padding-top: clamp(0.5rem, 2dvh, 1rem);
+        padding-bottom: clamp(0.5rem, 2dvh, 1rem);
+      }
+
+      @media (min-width: 1024px) {
+        .hero-fold {
+          height: calc(100dvh - var(--hero-header-offset));
+          max-height: calc(100dvh - var(--hero-header-offset));
+          min-height: calc(100dvh - var(--hero-header-offset));
+          overflow: hidden;
+          display: flex;
           flex-direction: column;
+          /* Anchor content below the header instead of vertically centering (centering pulled the mockup up). */
+          justify-content: flex-start;
+          padding-top: clamp(1.25rem, 3dvh, 2rem);
+          padding-bottom: clamp(0.75rem, 2dvh, 1.25rem);
+        }
+
+        .hero-fold-inner {
+          min-height: 0;
+          flex: 1 1 auto;
+          display: grid;
           align-items: center;
         }
 
-        .hero-stats {
-          justify-content: center;
-          gap: 1.5rem;
+        .hero-device-wrap {
+          display: flex;
+          max-height: 100%;
+          overflow: hidden;
+          justify-content: flex-end;
+          align-items: flex-start;
+          /* Offset below header — only this column; smaller = mock sits higher */
+          padding-top: clamp(0.5rem, 3dvh, 2rem);
+          margin-top: 0;
+          box-sizing: border-box;
+        }
+
+        .hero-device-scale {
+          transform-origin: top center;
+          transform: translateY(-0.75rem) scale(0.76);
         }
       }
 
-      /* Enhanced hover effects */
-      .feature-card,
-      .community-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      @media (min-width: 1280px) {
+        .hero-device-scale {
+          transform: translateY(-0.75rem) scale(0.84);
+        }
       }
 
-      .feature-card:hover,
-      .community-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      @media (min-width: 1536px) {
+        .hero-device-scale {
+          transform: translateY(-0.75rem) scale(0.92);
+        }
       }
 
-      /* Loading animation */
-      .loading {
+      .reveal {
         opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease-out;
+        transform: translateY(12px);
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
       }
 
-      .loaded {
+      .reveal.visible {
         opacity: 1;
         transform: translateY(0);
       }
+
+      .pressable,
+      .card-lift,
+      .seg-indicator,
+      .search-icon,
+      .theme-toggle svg {
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+      }
+
+      .pressable {
+        transition-property: transform, box-shadow, background-color, border-color, color;
+      }
+
+      .pressable:active {
+        transform: scale(0.98);
+      }
+
+      .card-lift {
+        transition-property: transform, box-shadow, border-color;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .card-lift:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 28px rgba(0, 0, 0, 0.09);
+          border-color: color-mix(in srgb, var(--primary) 20%, var(--hairline));
+        }
+      }
+
+      .search-shell:focus-within {
+        box-shadow: 0 0 0 2px rgba(4, 107, 92, 0.25);
+      }
+
+      html[data-theme="dark"] .search-shell:focus-within {
+        box-shadow: 0 0 0 2px rgba(11, 179, 138, 0.25);
+      }
+
+      .search-shell:focus-within .search-icon {
+        transform: translateX(2px);
+      }
+
+      .seg-track {
+        position: relative;
+      }
+
+      .seg-indicator {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: calc(50% - 4px);
+        height: calc(100% - 8px);
+        border-radius: 999px;
+        background: var(--segment-active);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        transition-property: transform;
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .seg-track[data-active="juz"] .seg-indicator {
+        transform: translateX(100%);
+      }
+
+      .reader-progress {
+        position: relative;
+        overflow: hidden;
+        height: 4px;
+        background: rgba(120, 183, 198, 0.18);
+      }
+
+      .reader-progress-fill {
+        position: relative;
+        width: 42%;
+        height: 100%;
+        background: linear-gradient(90deg, #78b7c6, #9ed2de);
+      }
+
+      .reader-progress-fill::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 40%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+        animation: shimmer 8s linear infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-150%);
+        }
+        100% {
+          transform: translateX(380%);
+        }
+      }
+
+      .phone-shadow {
+        box-shadow:
+          0 18px 48px rgba(0, 0, 0, 0.1),
+          0 2px 8px rgba(0, 0, 0, 0.06);
+      }
+
+      html[data-theme="dark"] .phone-shadow {
+        box-shadow:
+          0 22px 54px rgba(0, 0, 0, 0.45),
+          0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .theme-toggle.spin svg {
+        transform: rotate(180deg);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        .reveal,
+        .reveal.visible,
+        .pressable,
+        .card-lift,
+        .seg-indicator,
+        .search-icon,
+        .theme-toggle svg,
+        .reader-progress-fill::after {
+          animation: none !important;
+          transition: none !important;
+          transform: none !important;
+          opacity: 1 !important;
+        }
+      }
+
+      /* Theme-synced horizontal strips: assets/screenshots/light vs assets/screenshots/dark */
+      .shots-strip {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x proximity;
+        scroll-padding-inline: 1.25rem;
+        padding-bottom: 0.5rem;
+        margin-left: -1.25rem;
+        margin-right: -1.25rem;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        scrollbar-color: color-mix(in srgb, var(--primary) 35%, transparent) transparent;
+      }
+
+      @media (min-width: 768px) {
+        .shots-strip {
+          margin-left: 0;
+          margin-right: 0;
+          padding-left: 0;
+          padding-right: 0;
+          scroll-padding-inline: 0;
+        }
+      }
+
+      .shots-theme-light.shots-strip {
+        display: flex;
+      }
+
+      .shots-theme-dark.shots-strip {
+        display: none;
+      }
+
+      html[data-theme="dark"] .shots-theme-light.shots-strip {
+        display: none;
+      }
+
+      html[data-theme="dark"] .shots-theme-dark.shots-strip {
+        display: flex;
+      }
     </style>
   </head>
-  <body class="font-inter">
-    <!-- Navigation -->
-    <nav
-      class="sticky top-0 left-0 right-0 bg-white backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300"
+  <body class="bg-scaffold text-onsurface">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-card focus:bg-primary focus:px-4 focus:py-2 focus:font-button focus:text-white"
     >
-      <div
-        class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16"
-      >
-        <div class="flex items-center gap-2 text-2xl font-bold text-amber-600">
-          <a href="/" class="flex items-center pt-3">
-            <img
-              src="assets/img/image-icon.png"
-              alt="HafizPro Logo"
-              width="80"
-              class="object-contain brightness-110 contrast-120"
-            />
-            <img
-              src="assets/img/hafizpro-logo.png"
-              alt="HafizPro Logo"
-              width="120"
-              class="object-contain brightness-110 contrast-120"
-            />
+      Skip to content
+    </a>
+
+    <header class="sticky top-0 z-40 border-b border-hairline/80 bg-surface/90 backdrop-blur" style="background-color: color-mix(in srgb, var(--surface) 92%, var(--header-wash));">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+        <a href="#main" class="flex items-center gap-3 text-strong no-underline">
+          <img
+            src="assets/app-icon-512.png"
+            alt="Hafiz Pro"
+            width="40"
+            height="40"
+            decoding="async"
+            class="h-10 w-10 shrink-0 rounded-[22%] object-cover shadow-sm ring-1 ring-black/[0.06] dark:ring-white/10"
+          />
+          <span>
+            <span class="block font-display text-lg font-bold leading-none">Hafiz Pro</span>
+            <span class="block text-xs text-muted">Master the Quran, One Ayah at a Time</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-5 text-sm text-muted lg:flex">
+          <a class="hover:text-strong" href="#quran-hub">Quran hub</a>
+          <a class="hover:text-strong" href="#practice">Practice</a>
+          <a class="hover:text-strong" href="#reader">Reader</a>
+          <a class="hover:text-strong" href="#bookmarks">Insights</a>
+          <a class="hover:text-strong" href="#screenshots">Screenshots</a>
+          <a class="hover:text-strong" href="#settings">Settings</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button
+            id="theme-toggle"
+            type="button"
+            class="theme-toggle pressable flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-iconghost text-strong"
+            aria-label="Toggle theme"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM11 1h2v3h-2V1Zm0 19h2v3h-2v-3ZM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.929Zm13.435 13.435 1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121ZM19.071 3.515l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121ZM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121ZM23 11v2h-3v-2h3ZM4 11v2H1v-2h3Z"></path>
+            </svg>
+          </button>
+          <a
+            href="#download"
+            class="pressable hidden rounded-card bg-primary px-4 py-2.5 font-button text-sm font-semibold text-white shadow-card sm:inline-flex"
+          >
+            Get the app
           </a>
         </div>
-        <div class="hidden md:flex gap-6 lg:gap-8">
-          <a
-            href="#features"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Features</a
-          >
-          <a
-            href="#screenshots"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Screenshots</a
-          >
-          <a
-            href="#support"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Support</a
-          >
-          <a
-            href="https://app.hafizpro.com/"
-            target="_blank"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Web App</a
-          >
-        </div>
-        <div
-          class="md:hidden flex flex-col cursor-pointer group"
-          id="mobile-menu-toggle"
-        >
-          <span
-            class="w-6 h-0.5 bg-amber-700 mb-1 transition-all duration-300 group-hover:bg-amber-600"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-amber-700 mb-1 transition-all duration-300 group-hover:bg-amber-600"
-          ></span>
-          <span
-            class="w-6 h-0.5 bg-amber-700 transition-all duration-300 group-hover:bg-amber-600"
-          ></span>
-        </div>
       </div>
+    </header>
 
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden bg-white border-t border-gray-200"
-      >
-        <div class="px-4 py-4 space-y-4">
-          <a
-            href="#features"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Features</a
-          >
-          <a
-            href="#screenshots"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Screenshots</a
-          >
-          <a
-            href="#support"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Support</a
-          >
-          <a
-            href="https://app.hafizpro.com/"
-            target="_blank"
-            class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2"
-            >Web App</a
-          >
-        </div>
-      </div>
-    </nav>
+    <main id="main">
+      <section class="hero-fold relative overflow-hidden border-b border-hairline bg-gradient-to-b from-primarycontainer via-[var(--hero-mid)] to-scaffold px-5">
+        <div class="hero-grid pointer-events-none absolute inset-0"></div>
+        <div class="relative z-[1] mx-auto flex w-full max-w-6xl min-h-0 flex-1 flex-col justify-center lg:max-h-full lg:justify-start">
+          <div class="hero-fold-inner grid max-w-full gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:gap-6 xl:gap-8">
+            <div class="reveal min-h-0 lg:pr-2" style="transition-delay: 0ms">
+            <p class="font-label text-[11px] font-semibold uppercase tracking-[0.16em] text-secondary sm:text-xs">
+              Quran memorization · listening · review — without the noise
+            </p>
+            <h1 class="mt-2 font-display text-[clamp(1.65rem,2.2vw+1.05rem,3.15rem)] font-bold leading-[1.12] text-strong">
+              Memorize with structure,
+              <span class="block text-primary">listen with focus, review with confidence.</span>
+            </h1>
+            <p class="mt-3 max-w-xl text-sm leading-relaxed text-muted md:text-[15px]">
+              Quran reading, per-ayah audio, light recitation checks, bookmarks, and progress—calm enough to open every day.
+            </p>
+            <p class="mt-3 font-arabic text-xl leading-relaxed text-onsurface md:text-2xl" dir="rtl" lang="ar">
+              وَقُلْ رَبِّ زِدْنِي عِلْمًا
+            </p>
+            <p class="mt-1 hidden text-xs text-muted lg:block">
+              Arabic in Amiri; Kitab is used in the app for select display text.
+            </p>
 
-    <!-- Hero Section -->
-    <section
-      class="min-h-screen bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 text-white relative overflow-hidden flex items-center transition-all duration-1000 ease-in-out"
-    >
-      <div
-        class="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10"
-      >
-        <div class="text-center lg:text-left">
-          <div
-            class="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full text-sm mt-5 md:mt-0 mb-6 backdrop-blur-md"
-          >
-            <i class="fas fa-star text-yellow-400"></i>
-            <span>Latest Version: 25.10.14</span>
+            <div class="mt-4 flex flex-wrap gap-2 border-t border-hairline/70 pt-4 sm:gap-3">
+              <a
+                href="https://apps.apple.com/ng/app/hafiz-pro/id6759380253"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pressable inline-flex items-center justify-center rounded-card border border-hairline bg-surface px-4 py-2.5 font-button text-xs font-semibold text-strong shadow-sm sm:px-5 sm:text-sm"
+              >
+                App Store
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pressable inline-flex items-center justify-center rounded-card border border-hairline bg-surface px-4 py-2.5 font-button text-xs font-semibold text-strong shadow-sm sm:px-5 sm:text-sm"
+              >
+                Google Play
+              </a>
+              <a
+                href="https://app.hafizpro.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pressable inline-flex items-center justify-center rounded-card border border-hairline bg-surface px-4 py-2.5 font-button text-xs font-semibold text-strong shadow-sm sm:px-5 sm:text-sm"
+              >
+                Web app
+              </a>
+              <a href="privacy-policy.html" class="pressable inline-flex items-center justify-center rounded-card px-4 py-2.5 font-button text-xs font-semibold text-muted hover:text-strong sm:px-5 sm:text-sm">
+                Privacy policy
+              </a>
+            </div>
           </div>
 
-          <h1
-            class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in-up"
-          >
-            Master the Quran,
-            <span
-              class="bg-gradient-to-r from-amber-400 to-yellow-500 bg-clip-text text-transparent"
-              >One Ayah at a Time</span
+          <div class="reveal hero-device-wrap justify-center lg:justify-end" style="transition-delay: 80ms">
+            <div class="hero-device-scale w-full max-w-[390px]">
+            <div class="mx-auto max-w-[390px] rounded-[32px] border border-hairline bg-surface p-3 phone-shadow">
+              <div class="relative overflow-hidden rounded-[28px] border border-hairline bg-scaffold">
+                <div class="flex items-center justify-between px-4 pt-4">
+                  <div class="flex items-center gap-2">
+                    <img
+                      src="assets/app-icon-512.png"
+                      alt=""
+                      width="40"
+                      height="40"
+                      decoding="async"
+                      class="h-10 w-10 shrink-0 rounded-[22%] object-cover shadow-sm ring-1 ring-black/[0.06] dark:ring-white/10"
+                    />
+                    <div>
+                      <p class="font-display text-sm font-bold text-strong">Hafiz Pro</p>
+                      <p class="text-xs text-muted">MainMenuShell feel</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-full bg-iconghost text-strong">☀</span>
+                    <span class="flex h-10 w-10 items-center justify-center rounded-full bg-iconghost text-strong">⚙</span>
+                  </div>
+                </div>
+
+                <div class="px-4 pt-4">
+                  <div class="seg-track h-11 rounded-full bg-segment p-1" data-demo-segment data-active="surah">
+                    <div class="seg-indicator"></div>
+                    <div class="grid h-full grid-cols-2">
+                      <button type="button" class="relative z-10 rounded-full font-label text-sm font-semibold text-strong" data-seg-btn="surah">Surah</button>
+                      <button type="button" class="relative z-10 rounded-full font-label text-sm font-semibold text-muted" data-seg-btn="juz">Juz</button>
+                    </div>
+                  </div>
+
+                  <label class="search-shell mt-3 flex h-11 items-center gap-3 rounded-card border border-hairline bg-surface px-4">
+                    <svg class="search-icon h-5 w-5 text-muted" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Zm9.293 2.707-4.1-4.1a9.986 9.986 0 0 1-5.193 1.393 10 10 0 1 1 10-10 9.986 9.986 0 0 1-1.393 5.193l4.1 4.1-1.414 1.414Z"></path>
+                    </svg>
+                    <input
+                      class="w-full border-0 bg-transparent text-sm font-medium text-strong outline-none placeholder:text-muted"
+                      type="text"
+                      value=""
+                      placeholder="Search by surah, ayah, or juz"
+                    />
+                  </label>
+
+                  <div class="mt-3 rounded-card bg-cardteal p-4">
+                    <p class="font-label text-xs font-semibold uppercase tracking-wide text-strong/70">Continue reading</p>
+                    <p class="mt-1 font-display text-lg font-bold text-strong">Al-Baqarah · Ayah 142</p>
+                    <div class="mt-3 rounded-[10px] bg-surface p-3">
+                      <div class="flex items-center justify-between text-sm">
+                        <span class="text-strong">Reading progress</span>
+                        <span class="text-muted">48%</span>
+                      </div>
+                      <div class="mt-2 h-2 rounded-full bg-segment">
+                        <div class="h-full w-[48%] rounded-full bg-primary"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-3 grid gap-3">
+                    <div class="rounded-card bg-cardpeach p-4">
+                      <p class="font-label text-xs font-semibold uppercase tracking-wide text-strong/70">Challenge yourself</p>
+                      <p class="mt-1 text-sm font-semibold text-strong">Resume your last test without losing momentum.</p>
+                    </div>
+                    <div class="rounded-card bg-cardpurple p-4">
+                      <p class="font-label text-xs font-semibold uppercase tracking-wide text-strong/70">Now playing</p>
+                      <div class="mt-2 flex items-center gap-3 rounded-[10px] bg-surface/70 px-3 py-2">
+                        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-pillteal text-sm text-strong">▶</span>
+                        <div class="min-w-0">
+                          <p class="truncate text-sm font-semibold text-strong">Abdul Basit · Al-Fatihah</p>
+                          <p class="text-xs text-muted">Mini audio strip inspired by BottomAudioControls</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="px-4 pb-4 pt-4">
+                  <div class="rounded-card bg-readerteal text-white shadow-glow">
+                    <div class="border-b border-white/10 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-readercyan lg:px-4 lg:py-2.5 lg:text-xs">
+                      Reader focus strip
+                    </div>
+                    <div class="reader-progress">
+                      <div class="reader-progress-fill"></div>
+                    </div>
+                    <div class="px-3 py-3 lg:px-4 lg:py-4">
+                      <p class="font-arabic text-right text-lg leading-relaxed lg:text-xl" dir="rtl" lang="ar">
+                        الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+                      </p>
+                      <p class="mt-1 text-xs text-readercyan lg:mt-2 lg:text-sm">Ayah 1 · Reciter selectable · Share verse</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </section>
+
+      <section id="quran-hub" class="border-b border-hairline bg-scaffold px-5 py-16 md:py-20">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">QuranDashboardPage</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-strong">A dashboard built for returning learners.</h2>
+            <p class="mt-3 text-muted">
+              The structure follows your Flutter dashboard: segmented Surah/Juz access, a search field with quiet borders, progress-aware cards, bookmark continuity, and a compact now-playing state.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div class="reveal rounded-card border border-hairline bg-surface p-6 shadow-card">
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <h3 class="font-display text-xl font-bold text-strong">Main actions</h3>
+                <div class="flex gap-2">
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-iconghost text-strong">🔎</span>
+                  <span class="flex h-10 w-10 items-center justify-center rounded-full bg-iconghost text-strong">⚙</span>
+                </div>
+              </div>
+
+              <div class="mt-5 grid gap-4 md:grid-cols-2">
+                <article class="card-lift rounded-card border border-hairline bg-cardteal p-5">
+                  <p class="font-label text-xs font-semibold uppercase tracking-wide text-strong/70">Continue reading</p>
+                  <p class="mt-2 font-display text-lg font-bold text-strong">Resume from your last ayah</p>
+                  <p class="mt-2 text-sm text-muted">Carry context forward instead of starting cold.</p>
+                </article>
+                <article class="card-lift rounded-card border border-hairline bg-cardpeach p-5">
+                  <p class="font-label text-xs font-semibold uppercase tracking-wide text-strong/70">Challenge yourself</p>
+                  <p class="mt-2 font-display text-lg font-bold text-strong">Jump back into memorization tests</p>
+                  <p class="mt-2 text-sm text-muted">A warm visual tone for momentum and review pressure.</p>
+                </article>
+                <article class="card-lift rounded-card border border-hairline bg-cardpurple p-5 md:col-span-2">
+                  <p class="font-label text-xs font-semibold uppercase tracking-wide text-strong/70">Now playing</p>
+                  <div class="mt-3 flex flex-wrap items-center gap-3 rounded-[10px] bg-surface/70 px-3 py-3">
+                    <span class="flex h-10 w-10 items-center justify-center rounded-full bg-pillteal text-sm text-strong">▶</span>
+                    <div class="min-w-0 flex-1">
+                      <p class="truncate text-sm font-semibold text-strong">Current reciter · Al-Fatihah</p>
+                      <p class="text-xs text-muted">Surah or Juz context persists into the reader.</p>
+                    </div>
+                    <span class="rounded-full bg-segment px-3 py-1 font-label text-xs font-semibold text-muted">Audio active</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <aside class="reveal space-y-4" style="transition-delay: 80ms;">
+              <article class="card-lift rounded-card border border-hairline bg-surface p-5">
+                <h3 class="font-display text-lg font-bold text-strong">Core search</h3>
+                <p class="mt-2 text-sm text-muted">Designed around quick lookup of surah names, verse references, and Juz navigation.</p>
+              </article>
+              <article class="card-lift rounded-card border border-hairline bg-surface p-5">
+                <h3 class="font-display text-lg font-bold text-strong">Reading progress</h3>
+                <p class="mt-2 text-sm text-muted">Progress tracking is visible but never noisy, matching the educational tone of the app.</p>
+              </article>
+              <article class="card-lift rounded-card border border-hairline bg-surface p-5">
+                <h3 class="font-display text-lg font-bold text-strong">Bookmark continuity</h3>
+                <p class="mt-2 text-sm text-muted">Saved ayat stay one tap away from the dashboard, not buried inside secondary flows.</p>
+              </article>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="practice" class="border-b border-hairline bg-surface px-5 py-16 md:py-20">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">TestMenuPage · TestScreen</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-strong">Practice that mirrors the actual memorization flows.</h2>
+            <p class="mt-3 text-muted">
+              The landing page should not invent generic “quiz” language. It should explicitly surface the real paths found in your codebase: Surah tests, Juz tests, random challenges, and the experimental Ayah Finder.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            <article class="reveal card-lift rounded-card border border-hairline bg-scaffold p-6 shadow-card">
+              <span class="inline-flex rounded-full bg-[#FADDE5] px-3 py-1 text-xs font-semibold text-[#9C2A5B] dark:bg-[#4A2A34] dark:text-[#F3D2DE]">By Surah</span>
+              <h3 class="mt-4 font-display text-xl font-bold text-strong">Test by Surah</h3>
+              <p class="mt-2 text-sm text-muted">Structured recall inside a single surah for tighter memorization loops.</p>
+            </article>
+            <article class="reveal card-lift rounded-card border border-hairline bg-scaffold p-6 shadow-card" style="transition-delay: 80ms;">
+              <span class="inline-flex rounded-full bg-[#DCEEF2] px-3 py-1 text-xs font-semibold text-[#0A3A45] dark:bg-[#243F46] dark:text-[#BDE2EA]">By Juz</span>
+              <h3 class="mt-4 font-display text-xl font-bold text-strong">Test by Juz</h3>
+              <p class="mt-2 text-sm text-muted">Review broader passages to strengthen transitions and long-form retention.</p>
+            </article>
+            <article class="reveal card-lift rounded-card border border-hairline bg-scaffold p-6 shadow-card" style="transition-delay: 160ms;">
+              <span class="inline-flex rounded-full bg-cardpeach px-3 py-1 text-xs font-semibold text-[#9B4A3D] dark:text-[#F5D3CB]">Randomized</span>
+              <h3 class="mt-4 font-display text-xl font-bold text-strong">Random surah challenge</h3>
+              <p class="mt-2 text-sm text-muted">Useful on review days when predictability can make recall feel easier than it is.</p>
+            </article>
+            <article class="reveal card-lift rounded-card border border-hairline bg-scaffold p-6 shadow-card" style="transition-delay: 240ms;">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex rounded-full bg-segment px-3 py-1 text-xs font-semibold text-muted">Experimental</span>
+              </div>
+              <h3 class="mt-4 font-display text-xl font-bold text-strong">Ayah Finder</h3>
+              <p class="mt-2 text-sm text-muted">An evolving helper for quickly locating ayat, called out transparently as experimental.</p>
+            </article>
+          </div>
+
+          <div class="reveal mt-6 rounded-card border border-hairline bg-elevated p-6 shadow-card" style="transition-delay: 320ms;">
+            <div class="grid gap-4 md:grid-cols-[1fr_auto] md:items-center">
+              <div>
+                <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Speech-to-text support</p>
+                <h3 class="mt-2 font-display text-xl font-bold text-strong">Verification stays lightweight and respectful.</h3>
+                <p class="mt-2 text-sm text-muted">
+                  Where available, the app compares your recitation against the expected ayah text while still centering audio playback and Quran text, not gamified noise.
+                </p>
+              </div>
+              <div class="rounded-card bg-segment px-4 py-3 font-label text-sm font-semibold text-muted">
+                Per-ayah audio · Recitation check · Replay loop
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reader" class="border-b border-hairline bg-scaffold px-5 py-16 md:py-20">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">quran_view · juz_quran_view</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-strong">A reader that feels steady, not overstimulating.</h2>
+            <p class="mt-3 text-muted">
+              This section echoes the reader’s deep teal chrome and cyan audio accent while highlighting adjacent navigation, reciter control, focus reading, and verse sharing.
+            </p>
+          </div>
+
+          <div class="reveal mt-10 overflow-hidden rounded-[20px] border border-white/10 bg-readerteal text-white shadow-glow" style="transition-delay: 80ms;">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 px-5 py-4">
+              <div>
+                <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-readercyan">Reader header · #1D353B</p>
+                <h3 class="mt-1 font-display text-2xl font-bold">Focused ayah reading</h3>
+              </div>
+              <span class="rounded-full bg-white/10 px-3 py-1 font-label text-xs font-semibold text-readercyan">Bottom audio controls active</span>
+            </div>
+
+            <div class="reader-progress">
+              <div class="reader-progress-fill"></div>
+            </div>
+
+            <div class="grid gap-8 px-5 py-6 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+              <div>
+                <p class="font-arabic text-right text-[32px] leading-[2.1]" dir="rtl" lang="ar">
+                  الرَّحْمَٰنِ الرَّحِيمِ
+                </p>
+                <p class="mt-3 text-base text-readercyan">Amiri styling for Quran text samples, mirroring the in-app reading tone.</p>
+              </div>
+              <div class="space-y-3">
+                <div class="rounded-card border border-white/10 bg-white/5 p-4">
+                  <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-readercyan">Reader actions</p>
+                  <p class="mt-2 text-sm text-white/80">Adjacent navigation, reciter selection, speed control, repeat options, and verse sharing all belong in this visual story.</p>
+                </div>
+                <div class="flex items-center justify-between rounded-card border border-white/10 bg-white/5 p-4">
+                  <div>
+                    <p class="text-sm font-semibold">Current reciter</p>
+                    <p class="text-xs text-white/70">User-personalized from settings</p>
+                  </div>
+                  <span class="rounded-full bg-readercyan px-3 py-1 text-xs font-semibold text-readerteal">Select</span>
+                </div>
+                <div class="flex items-center gap-3 pt-1">
+                  <button class="pressable flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-lg text-white">‹</button>
+                  <button class="pressable flex h-14 w-14 items-center justify-center rounded-full bg-readercyan text-xl text-readerteal">▶</button>
+                  <button class="pressable flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-lg text-white">›</button>
+                  <span class="ml-auto font-label text-xs text-white/70">Share verse · Repeat · Focus mode</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bookmarks" class="border-b border-hairline bg-surface px-5 py-16 md:py-20">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">bookmarks_page · ReadingInsightsPage</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-strong">Bookmarks and insights make progress visible.</h2>
+            <p class="mt-3 text-muted">
+              Saved ayat stay close to the reading flow, while progress cards and insights offer gentle accountability without turning the app into a noisy dashboard.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-2">
+            <div class="reveal rounded-card border border-hairline bg-scaffold p-6 shadow-card">
+              <h3 class="font-display text-xl font-bold text-strong">Saved ayat</h3>
+              <ul class="mt-5 space-y-3 text-sm">
+                <li class="flex items-center justify-between rounded-[10px] border border-hairline bg-surface px-4 py-3">
+                  <span class="font-medium text-strong">Yasin · 36:12</span>
+                  <span class="text-muted">Bookmark</span>
+                </li>
+                <li class="flex items-center justify-between rounded-[10px] border border-hairline bg-surface px-4 py-3">
+                  <span class="font-medium text-strong">Ar-Rahman · 55:13</span>
+                  <span class="text-muted">Bookmark</span>
+                </li>
+                <li class="flex items-center justify-between rounded-[10px] border border-hairline bg-surface px-4 py-3">
+                  <span class="font-medium text-strong">Al-Kahf · 18:10</span>
+                  <span class="text-muted">Bookmark</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="reveal rounded-card border border-hairline bg-elevated p-6 shadow-card" style="transition-delay: 80ms;">
+              <h3 class="font-display text-xl font-bold text-strong">Reading insights</h3>
+              <p class="mt-2 text-sm text-muted">Reflect streaks, ayat covered, and consistency trends with the same quiet visual hierarchy used in the app.</p>
+              <div class="mt-5 grid grid-cols-3 gap-3">
+                <div class="rounded-card bg-pillteal/60 p-4 text-center dark:bg-cardteal">
+                  <p class="font-display text-2xl font-bold text-strong">12</p>
+                  <p class="text-xs text-muted">Day streak</p>
+                </div>
+                <div class="rounded-card bg-segment p-4 text-center">
+                  <p class="font-display text-2xl font-bold text-strong">48</p>
+                  <p class="text-xs text-muted">Ayat this week</p>
+                </div>
+                <div class="rounded-card bg-segment p-4 text-center">
+                  <p class="font-display text-2xl font-bold text-strong">3</p>
+                  <p class="text-xs text-muted">Juz touched</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="settings" class="border-b border-hairline bg-surface px-5 py-16 md:py-20">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">settings_screen</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-strong">Personalization should feel native to study, not like a separate admin page.</h2>
+            <p class="mt-3 text-muted">
+              Surface the real controls from your Flutter settings flow: reciter selection, notifications, progress tracking, languages, and theme mode.
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-5 lg:grid-cols-2">
+            <div class="reveal rounded-card border border-hairline bg-scaffold p-6 shadow-card">
+              <ul class="space-y-4">
+                <li class="flex items-center justify-between rounded-[10px] border border-hairline bg-surface px-4 py-3">
+                  <div>
+                    <p class="font-medium text-strong">Reciter</p>
+                    <p class="text-sm text-muted">Pick your preferred audio voice</p>
+                  </div>
+                  <span class="rounded-full bg-segment px-3 py-1 text-xs font-semibold text-muted">Picker sheet</span>
+                </li>
+                <li class="flex items-center justify-between rounded-[10px] border border-hairline bg-surface px-4 py-3">
+                  <div>
+                    <p class="font-medium text-strong">Notifications</p>
+                    <p class="text-sm text-muted">Gentle reminders and daily rhythm</p>
+                  </div>
+                  <span class="h-6 w-11 rounded-full bg-brand/20 p-1">
+                    <span class="block h-4 w-4 rounded-full bg-primary"></span>
+                  </span>
+                </li>
+                <li class="flex items-center justify-between rounded-[10px] border border-hairline bg-surface px-4 py-3">
+                  <div>
+                    <p class="font-medium text-strong">Progress tracking</p>
+                    <p class="text-sm text-muted">On, off, or tuned to your reading goals</p>
+                  </div>
+                  <span class="rounded-full bg-segment px-3 py-1 text-xs font-semibold text-muted">Sheet</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="reveal rounded-card border border-hairline bg-scaffold p-6 shadow-card" style="transition-delay: 80ms;">
+              <h3 class="font-display text-xl font-bold text-strong">Language and theme</h3>
+              <p class="mt-2 text-sm text-muted">Locale support and theme switching are first-class features in the app, so they deserve clear presence here too.</p>
+              <div class="mt-5 rounded-card bg-segment p-4">
+                <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Supported languages</p>
+                <p class="mt-2 text-sm font-medium text-strong">English · العربية · Русский · Deutsch</p>
+              </div>
+              <div class="mt-4 rounded-card bg-segment p-4">
+                <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Theme modes</p>
+                <p class="mt-2 text-sm font-medium text-strong">Light · Dark · System</p>
+              </div>
+              <div class="mt-4 rounded-card bg-segment p-4">
+                <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Support & feedback</p>
+                <p class="mt-2 text-sm text-muted">Keep external links present but secondary to study tasks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="trust" class="border-b border-hairline bg-scaffold px-5 py-16 md:py-20">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-3xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Trust</p>
+            <h2 class="mt-3 font-display text-3xl font-bold text-strong">Respect the subject matter. Reduce friction. Avoid noise.</h2>
+            <p class="mt-3 text-muted">
+              The product story should emphasize offline Quran access, careful personalization, localization support, and a privacy posture that feels responsible rather than overly promotional.
+              <a href="privacy-policy.html" class="font-medium text-primary hover:underline">Read the privacy policy</a>.
+            </p>
+          </div>
+
+          <div class="mt-8 grid gap-4 md:grid-cols-3">
+            <div class="reveal rounded-card border border-hairline bg-surface p-5 shadow-card">
+              <h3 class="font-display text-lg font-bold text-strong">Offline-first</h3>
+              <p class="mt-2 text-sm text-muted">Core Quran study stays available without relying on a network connection.</p>
+            </div>
+            <div class="reveal rounded-card border border-hairline bg-surface p-5 shadow-card" style="transition-delay: 80ms;">
+              <h3 class="font-display text-lg font-bold text-strong">Localized</h3>
+              <p class="mt-2 text-sm text-muted">Multiple language options widen accessibility without changing the calm interface tone.</p>
+            </div>
+            <div class="reveal rounded-card border border-hairline bg-surface p-5 shadow-card" style="transition-delay: 160ms;">
+              <h3 class="font-display text-lg font-bold text-strong">Focused analytics</h3>
+              <p class="mt-2 text-sm text-muted">Insights support learning habits rather than pushing vanity metrics.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="download" class="border-b border-hairline bg-primarycontainer/35 px-5 py-12 md:py-16 dark:bg-primarycontainer/25" aria-labelledby="download-heading">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Download</p>
+            <h2 id="download-heading" class="mt-2 font-display text-3xl font-bold text-strong">Get Hafiz Pro</h2>
+            <p class="mt-3 text-muted">
+              Install on iPhone, iPad, or Android—or open the web app in your browser. The same calm memorization experience—reading, audio, practice, and bookmarks—wherever you use it.
+            </p>
+          </div>
+          <div class="reveal mt-8 flex flex-wrap gap-4" style="transition-delay: 80ms">
+            <a
+              href="https://apps.apple.com/ng/app/hafiz-pro/id6759380253"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="pressable inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-card bg-strong px-6 py-3 font-button text-sm font-semibold text-surface shadow-card dark:bg-surface dark:text-strong"
             >
-          </h1>
-
-          <p
-            class="text-lg sm:text-xl opacity-90 mb-8 leading-relaxed animate-fade-in-up animation-delay-200"
-          >
-            A Flutter application designed to help Muslims test and improve
-            their Quran memorization skills through interactive audio-based
-            testing.
-          </p>
-
-          <div
-            class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mb-12 animate-fade-in-up animation-delay-400"
-          >
+              Download on the App Store
+            </a>
             <a
               href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
               target="_blank"
-              class="inline-flex items-center gap-2 bg-white text-emerald-600 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+              rel="noopener noreferrer"
+              class="pressable inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-card border-2 border-primary bg-surface px-6 py-3 font-button text-sm font-semibold text-primary shadow-sm"
             >
-              <i class="fab fa-android"></i>
-              Download Android
+              Get it on Google Play
             </a>
             <a
-              href="#"
-              onclick="alert('Coming Soon')"
-              class="inline-flex items-center gap-2 bg-white/20 text-white border-2 border-white/30 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base backdrop-blur-md hover:bg-white/30 transform hover:-translate-y-1 transition-all duration-300"
-            >
-              <i class="fab fa-apple"></i>
-              Download iOS
-            </a>
-            <a
-              href="https://app.hafizpro.com/"
+              href="https://app.hafizpro.com"
               target="_blank"
-              class="inline-flex items-center gap-2 bg-white/20 text-white border-2 border-white/30 px-5 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base backdrop-blur-md hover:bg-white/30 transform hover:-translate-y-1 transition-all duration-300"
+              rel="noopener noreferrer"
+              class="pressable inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-card border-2 border-hairline bg-surface px-6 py-3 font-button text-sm font-semibold text-strong shadow-sm"
             >
-              <i class="fas fa-globe"></i>
-              Web App
+              Open app.hafizpro.com
             </a>
           </div>
-
-          <div
-            class="flex flex-wrap gap-6 sm:gap-8 justify-center lg:justify-start animate-fade-in-up animation-delay-600"
-          >
-            <div class="text-center">
-              <span
-                class="block text-3xl font-bold text-amber-400 counter"
-                data-target="20"
-                >0</span
-              >
-              <span class="text-sm opacity-80">Reciters</span>
-            </div>
-            <div class="text-center">
-              <span
-                class="block text-3xl font-bold text-amber-400 counter"
-                data-target="114"
-                >0</span
-              >
-              <span class="text-sm opacity-80">Surahs</span>
-            </div>
-            <div class="text-center">
-              <span
-                class="block text-3xl font-bold text-amber-400 counter"
-                data-target="6200"
-                >0</span
-              >
-              <span class="text-sm opacity-80">Verses</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="flex justify-center animate-fade-in-up animation-delay-800">
-          <div class="relative w-72 sm:w-80 h-[500px] sm:h-[600px] mx-auto">
-            <img
-              src="assets/screenshots/5.png"
-              alt="HafizPro App Screenshot"
-              class="w-full h-full object-cover rounded-[30px] shadow-2xl hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">🌟 Key Features</h2>
-          <p class="text-xl text-gray-600">
-            Everything you need to master Quran memorization
+          <p class="reveal mt-6 text-sm text-muted" style="transition-delay: 160ms">
+            <a href="privacy-policy.html" class="font-medium text-primary hover:underline">Privacy policy</a>
+            — how we handle data when you use Hafiz Pro.
           </p>
         </div>
+      </section>
 
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-        >
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-brain text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Interactive Memorization Testing
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Random verse testing from any chapter
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Test by Surah, Juz, or random selection
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Progress tracking and analytics
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Smart memorization insights
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-volume-up text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Premium Audio Experience
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                20+ renowned reciters
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Multi-language support
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Advanced playback controls
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Background playback support
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-palette text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Beautiful User Experience
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Modern UI with Arabic typography
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Dark/Light theme support
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Responsive design
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Interactive user guide
-              </li>
-            </ul>
-          </div>
-
-          <div
-            class="bg-white p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2 feature-card"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-6"
-            >
-              <i class="fas fa-cog text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-4">
-              Advanced Features
-            </h3>
-            <ul class="space-y-2">
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Offline support
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Settings management
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Progress analytics
-              </li>
-              <li
-                class="text-gray-600 relative pl-6 before:absolute before:left-0 before:content-['✓'] before:text-emerald-600 before:font-bold"
-              >
-                Rating and feedback system
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="py-20">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            📱 Screenshots & Demo
-          </h2>
-          <p class="text-xl text-gray-600">See the app in action</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/1.png"
-                alt="HafizPro Main Menu"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/2.png"
-                alt="HafizPro Reciter Selection"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/3.png"
-                alt="HafizPro Settings"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/4.png"
-                alt="HafizPro Progress Tracking"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/5.png"
-                alt="HafizPro Audio Controls"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/6.png"
-                alt="HafizPro Testing Interface"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/7.png"
-                alt="HafizPro Testing Interface"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-
-          <div class="group cursor-pointer">
-            <div
-              class="w-full h-[600px] shadow-2xl rounded-3xl overflow-hidden relative bg-white p-2"
-            >
-              <img
-                src="assets/screenshots/8.png"
-                alt="HafizPro Testing Interface"
-                class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-all duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technical Section -->
-    <section class="py-20">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            🛠️ Technical Architecture
-          </h2>
-          <p class="text-xl text-gray-600">Built with modern technologies</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fab fa-flutter text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Flutter Framework
-            </h3>
-            <p class="text-gray-600 text-sm">
-              Modern UI framework for cross-platform development
+      <section id="screenshots" class="border-b border-hairline bg-surface px-5 py-12 md:py-16" aria-labelledby="shots-heading">
+        <div class="mx-auto max-w-6xl">
+          <div class="reveal mb-6 max-w-2xl">
+            <p class="font-label text-xs font-semibold uppercase tracking-[0.18em] text-secondary">Product captures</p>
+            <h2 id="shots-heading" class="mt-2 font-display text-3xl font-bold text-strong">Real app screenshots</h2>
+            <p class="mt-3 text-muted">
+              Captures from the real app in light and dark appearance. Use the theme control in the header to switch between them, and scroll sideways to browse.
             </p>
           </div>
 
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-music text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Advanced Audio
-            </h3>
-            <p class="text-gray-600 text-sm">
-              just_audio for premium audio playback experience
-            </p>
+          <div class="shots-theme-light shots-strip mt-6" aria-label="Light theme screenshots">
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194446.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194458.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194545.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194601.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194650.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194707.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194750.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194802.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194926.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194946.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/light/Screenshot_20260410-194956.png" alt="Hafiz Pro screenshot, light appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
           </div>
 
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-database text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Local Storage
-            </h3>
-            <p class="text-gray-600 text-sm">
-              shared_preferences for secure local data storage
-            </p>
-          </div>
-
-          <div
-            class="text-center p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:-translate-y-1"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-test-tube text-2xl text-white"></i>
-            </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-2">
-              Comprehensive Testing
-            </h3>
-            <p class="text-gray-600 text-sm">
-              Unit, widget, and integration tests for reliability
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Community Section -->
-    <section id="support" class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            🤝 Community & Support
-          </h2>
-          <p class="text-xl text-gray-600">Join our growing community</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fab fa-github text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              Open Source
-            </h3>
-            <p class="text-gray-600 mb-6">
-              Contribute to the project on GitHub
-            </p>
-            <a
-              href="https://github.com/bynalab/hafiz_test"
-              target="_blank"
-              class="inline-block bg-transparent text-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >View Source</a
-            >
-          </div>
-
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-bug text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              Report Issues
-            </h3>
-            <p class="text-gray-600 mb-6">Help us improve by reporting bugs</p>
-            <a
-              href="https://chat.whatsapp.com/EuF6FS3qL9TElJSNQBHEdp"
-              target="_blank"
-              class="inline-block bg-transparent text-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >Report Bug</a
-            >
-          </div>
-
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-lightbulb text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">
-              Feature Requests
-            </h3>
-            <p class="text-gray-600 mb-6">
-              Suggest new features and improvements
-            </p>
-            <a
-              href="https://chat.whatsapp.com/EuF6FS3qL9TElJSNQBHEdp"
-              target="_blank"
-              class="inline-block bg-transparent text-blue-600 border-2 border-blue-600 px-4 py-2 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >Suggest Feature</a
-            >
-          </div>
-
-          <div
-            class="bg-white p-8 rounded-2xl text-center shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:-translate-y-2"
-          >
-            <div
-              class="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mx-auto mb-4"
-            >
-              <i class="fas fa-users text-2xl text-white"></i>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900 mb-2">Community</h3>
-            <p class="text-gray-600 mb-6">Join discussions and get help</p>
-            <a
-              href="https://whatsapp.com/channel/0029Vb7FCqkFHWpx566byH0Y"
-              target="_blank"
-              class="inline-block bg-transparent text-emerald-600 border-2 border-emerald-600 px-4 py-2 rounded-lg font-semibold hover:bg-emerald-600 hover:text-white transform hover:-translate-y-1 transition-all duration-300"
-              >Join Community</a
-            >
+          <div class="shots-theme-dark shots-strip mt-2" aria-label="Dark theme screenshots">
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194435.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194509.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194530.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194614.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194634.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194718.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194746.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194811.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-194859.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-195010.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-195017.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="reveal w-[min(240px,78vw)] shrink-0 snap-start overflow-hidden rounded-card border border-hairline bg-segment shadow-card">
+              <img src="assets/screenshots/dark/Screenshot_20260410-195028.png" alt="Hafiz Pro screenshot, dark appearance" class="block h-[min(440px,52svh)] w-full object-contain object-top" loading="lazy" decoding="async" />
+            </figure>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+    <footer class="bg-surface px-5 py-10">
+      <div class="mx-auto max-w-6xl border-t border-hairline pt-6">
+        <div class="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div>
-            <div class="flex items-center mb-4">
-              <img
-                src="assets/img/image-icon.png"
-                alt="HafizPro Logo"
-                width="80"
-                class="object-contain brightness-110 contrast-120"
-              />
-              <img
-                src="assets/img/hafizpro-logo.png"
-                alt="HafizPro Logo"
-                width="120"
-                class="object-contain brightness-110 contrast-120"
-              />
-            </div>
-            <p class="text-gray-300 mb-4">
-              Master the Quran, One Ayah at a Time
-            </p>
-            <div class="flex gap-4">
+            <p class="font-display text-base font-bold text-strong">Hafiz Pro</p>
+            <p class="mt-1 text-sm text-muted">Landing page preview built from your Flutter prompt and theme tokens.</p>
+            <div class="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm font-medium">
               <a
-                href="https://github.com/bynalab/hafiz_test"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transform hover:-translate-y-1 transition-all duration-300"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://x.com/gethafizpro"
+                href="https://apps.apple.com/ng/app/hafiz-pro/id6759380253"
+                class="text-primary hover:underline"
                 target="_blank"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transform hover:-translate-y-1 transition-all duration-300"
+                rel="noopener noreferrer"
+                >App Store</a
               >
-                <i class="fab fa-twitter"></i>
-              </a>
               <a
-                href="#"
-                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-emerald-600 transform hover:-translate-y-1 transition-all duration-300"
+                href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Google Play</a
               >
-                <i class="fab fa-linkedin"></i>
-              </a>
+              <a
+                href="https://app.hafizpro.com"
+                class="text-primary hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Web app</a
+              >
+              <a href="privacy-policy.html" class="text-primary hover:underline">Privacy policy</a>
             </div>
           </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Features</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Memorization Testing</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Audio Playback</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Progress Tracking</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Offline Support</a
-                >
-              </li>
-            </ul>
+          <div class="flex flex-wrap gap-4 text-sm text-muted">
+            <a href="#quran-hub" class="hover:text-strong">Quran hub</a>
+            <a href="#practice" class="hover:text-strong">Practice</a>
+            <a href="#reader" class="hover:text-strong">Reader</a>
+            <a href="#screenshots" class="hover:text-strong">Screenshots</a>
+            <a href="#download" class="hover:text-strong">Download</a>
+            <a href="#settings" class="hover:text-strong">Settings</a>
           </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Support</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >FAQ</a
-                >
-              </li>
-              <li>
-                <a
-                  href="mailto:bynalabs@gmail.com"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a
-                  href="privacy-policy.html"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Privacy Policy</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Download</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Android APK</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="alert('Coming Soon')"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >iOS App Store</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://app.hafizpro.com/"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Web App</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="border-t border-gray-800 pt-8 text-center">
-          <p class="text-gray-400 mb-2">
-            &copy; 2025 Hafiz Pro. All rights reserved.
-          </p>
-          <p class="text-gray-400">
-            Built with ❤️ by the
-            <a
-              href="https://x.com/byna001"
-              target="_blank"
-              class="text-gray-400 hover:text-white"
-              >Bynalab</a
-            >
-          </p>
         </div>
       </div>
     </footer>
 
-    <script src="script.js"></script>
     <script>
-      // Mobile menu toggle
-      document.addEventListener("DOMContentLoaded", function () {
-        const mobileToggle = document.getElementById("mobile-menu-toggle");
-        const mobileMenu = document.getElementById("mobile-menu");
+      (function () {
+        const root = document.documentElement;
+        const metaTheme = document.getElementById("meta-theme-color");
+        const themeToggle = document.getElementById("theme-toggle");
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const storedTheme = localStorage.getItem("hafiz-preview-theme");
 
-        if (mobileToggle && mobileMenu) {
-          mobileToggle.addEventListener("click", function () {
-            mobileMenu.classList.toggle("hidden");
-          });
+        function currentThemeColor(theme) {
+          return theme === "dark" ? "#0E0E0E" : "#FFFFFF";
         }
 
-        // Add loading animation
-        document.body.classList.add("loaded");
-
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: "0px 0px -50px 0px",
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("loaded");
-            }
-          });
-        }, observerOptions);
-
-        // Observe all cards for animation
-        document
-          .querySelectorAll(".feature-card, .community-card")
-          .forEach((card) => {
-            card.classList.add("loading");
-            observer.observe(card);
-          });
-
-        // Counter animation
-        function animateCounter(element, target, duration = 2000) {
-          let start = 0;
-          const increment = target / (duration / 16);
-          const isReciters = element
-            .closest(".text-center")
-            .querySelector(".text-sm")
-            .textContent.includes("Reciters");
-
-          const timer = setInterval(() => {
-            start += increment;
-            if (start >= target) {
-              const finalValue = target.toLocaleString();
-              element.textContent = isReciters ? finalValue + "+" : finalValue;
-              clearInterval(timer);
-            } else {
-              const currentValue = Math.floor(start);
-              element.textContent = isReciters
-                ? currentValue + "+"
-                : currentValue.toLocaleString();
-            }
-          }, 16);
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          metaTheme.setAttribute("content", currentThemeColor(theme));
+          localStorage.setItem("hafiz-preview-theme", theme);
         }
 
-        // Animate counters when they come into view
-        const counterObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                const target = parseInt(entry.target.dataset.target);
-                animateCounter(entry.target, target);
-                counterObserver.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.5 }
-        );
+        setTheme(storedTheme || (prefersDark.matches ? "dark" : "light"));
 
-        document.querySelectorAll(".counter").forEach((counter) => {
-          counterObserver.observe(counter);
+        themeToggle.addEventListener("click", function () {
+          root.classList.add("theme-transition");
+          themeToggle.classList.add("spin");
+          const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          setTheme(nextTheme);
+          window.setTimeout(function () {
+            root.classList.remove("theme-transition");
+            themeToggle.classList.remove("spin");
+          }, 320);
         });
-      });
+
+        const segmentTrack = document.querySelector("[data-demo-segment]");
+        const segmentButtons = document.querySelectorAll("[data-seg-btn]");
+        segmentButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const active = button.getAttribute("data-seg-btn");
+            segmentTrack.setAttribute("data-active", active);
+            segmentButtons.forEach(function (btn) {
+              const isActive = btn === button;
+              btn.classList.toggle("text-strong", isActive);
+              btn.classList.toggle("text-muted", !isActive);
+            });
+          });
+        });
+
+        const revealEls = document.querySelectorAll(".reveal");
+        if (reducedMotion) {
+          revealEls.forEach(function (el) {
+            el.classList.add("visible");
+          });
+        } else {
+          const observer = new IntersectionObserver(
+            function (entries) {
+              entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                const delay = entry.target.style.transitionDelay || "0ms";
+                entry.target.style.transitionDelay = delay;
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              });
+            },
+            { threshold: 0.18 }
+          );
+
+          revealEls.forEach(function (el) {
+            observer.observe(el);
+          });
+        }
+      })();
     </script>
   </body>
 </html>

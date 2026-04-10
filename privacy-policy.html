@@ -1,335 +1,426 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Privacy Policy - Hafiz Pro</title>
+    <meta name="theme-color" content="#FFFFFF" id="meta-theme-color" />
+    <title>Privacy Policy | Hafiz Pro</title>
+    <meta
+      name="description"
+      content="Privacy policy for the Hafiz Pro Quran memorization app."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="assets/app-icon-512.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: ["class", '[data-theme="dark"]'],
         theme: {
           extend: {
             fontFamily: {
-              inter: ["Inter", "sans-serif"],
-              amiri: ["Amiri", "serif"],
+              sans: ["Inter", "system-ui", "sans-serif"],
+              display: ["Cairo", "Inter", "system-ui", "sans-serif"],
+              button: ["Montserrat", "Inter", "system-ui", "sans-serif"],
+            },
+            borderRadius: { card: "12px" },
+            colors: {
+              primary: "var(--primary)",
+              surface: "var(--surface)",
+              scaffold: "var(--scaffold)",
+              onsurface: "var(--on-surface)",
+              outline: "var(--outline)",
+              brand: "var(--brand)",
+              strong: "var(--strong)",
+              muted: "var(--muted)",
+              hairline: "var(--hairline)",
+              segment: "var(--segment)",
+              iconghost: "var(--icon-ghost)",
             },
           },
         },
       };
     </script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="icon" type="image/png" href="assets/img/icon-logo.png" />
-    <link rel="apple-touch-icon" href="assets/img/icon-logo.png" />
+
     <style>
-      /* Smooth scrolling */
-      html {
-        scroll-behavior: smooth;
+      :root,
+      html[data-theme="light"] {
+        color-scheme: light;
+        --brand: #004b40;
+        --primary: #046b5c;
+        --surface: #ffffff;
+        --scaffold: #ffffff;
+        --on-surface: #222222;
+        --outline: #6f7976;
+        --strong: #111827;
+        --muted: #6b7280;
+        --hairline: #e5e7eb;
+        --segment: #f3f4f6;
+        --icon-ghost: #f2f2f2;
+        --header-wash: rgba(0, 75, 64, 0.04);
+      }
+
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --brand: #0bb38a;
+        --primary: #0bb38a;
+        --surface: #121212;
+        --scaffold: #0e0e0e;
+        --on-surface: #e6e6e6;
+        --outline: #9ca3af;
+        --strong: #f3f4f6;
+        --muted: #9ca3af;
+        --hairline: #2a2a2a;
+        --segment: #141414;
+        --icon-ghost: #1a1a1a;
+        --header-wash: rgba(11, 179, 138, 0.06);
+      }
+
+      body {
+        margin: 0;
+        background: var(--scaffold);
+        color: var(--on-surface);
+        font-family: Inter, system-ui, sans-serif;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      .theme-transition body {
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      .pressable:active {
+        transform: scale(0.98);
+      }
+
+      .pressable {
+        transition: transform 0.15s ease-out;
+      }
+
+      .theme-toggle.spin svg {
+        transform: rotate(180deg);
+      }
+
+      .policy-prose h2 {
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        font-family: Cairo, Inter, system-ui, sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--strong);
+      }
+
+      .policy-prose h2:first-child {
+        margin-top: 0;
+      }
+
+      .policy-prose p,
+      .policy-prose li {
+        color: var(--muted);
+      }
+
+      .policy-prose ul {
+        margin: 0.5rem 0 1rem 1.25rem;
+        padding: 0;
+      }
+
+      .policy-prose a {
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      .policy-prose a:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
-  <body class="font-inter bg-gray-50 text-gray-800">
-    <!-- Navigation -->
-    <nav
-      class="sticky top-0 left-0 right-0 bg-white backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300"
+  <body class="bg-scaffold text-onsurface">
+    <header
+      class="sticky top-0 z-40 border-b border-hairline/80 bg-surface/90 backdrop-blur"
+      style="
+        background-color: color-mix(
+          in srgb,
+          var(--surface) 92%,
+          var(--header-wash)
+        );
+      "
     >
       <div
-        class="max-w-6xl mx-auto px-4 flex items-center justify-between h-16"
+        class="mx-auto flex max-w-3xl items-center justify-between gap-4 px-5 py-4"
       >
-        <div class="flex items-center gap-2 text-2xl font-bold text-amber-600">
-          <a href="index.html" class="flex items-center pt-3">
-            <img
-              src="assets/img/image-icon.png"
-              alt="HafizPro Logo"
-              width="80"
-              class="object-contain brightness-110 contrast-120"
-            />
-            <img
-              src="assets/img/hafizpro-logo.png"
-              alt="HafizPro Logo"
-              width="120"
-              class="object-contain brightness-110 contrast-120"
-            />
-          </a>
-        </div>
-        <div class="hidden md:flex gap-6 lg:gap-8">
+        <a
+          href="index.html"
+          class="flex items-center gap-3 text-strong no-underline"
+        >
+          <img
+            src="assets/app-icon-512.png"
+            alt=""
+            width="36"
+            height="36"
+            decoding="async"
+            class="h-9 w-9 shrink-0 rounded-[22%] object-cover shadow-sm ring-1 ring-black/[0.06]"
+          />
+          <span class="font-display text-base font-bold">Hafiz Pro</span>
+        </a>
+        <div class="flex items-center gap-2">
           <a
-            href="index.html#features"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Features</a
+            href="index.html"
+            class="pressable rounded-card border border-hairline px-3 py-2 font-button text-xs font-semibold text-strong no-underline sm:text-sm"
+            >Home</a
           >
-          <a
-            href="index.html#screenshots"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Screenshots</a
+          <button
+            id="theme-toggle"
+            type="button"
+            class="theme-toggle pressable flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-iconghost text-strong"
+            aria-label="Toggle theme"
           >
-          <a
-            href="index.html#support"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Support</a
-          >
-          <a
-            href="https://app.hafizpro.com/"
-            target="_blank"
-            class="text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 relative after:absolute after:bottom-[-5px] after:left-0 after:w-0 after:h-0.5 after:bg-amber-600 after:transition-all after:duration-300 hover:after:w-full"
-            >Web App</a
-          >
-        </div>
-        <div class="md:hidden flex flex-col cursor-pointer group" id="mobile-menu-toggle">
-            <span class="w-6 h-0.5 bg-amber-700 mb-1 transition-all duration-300 group-hover:bg-amber-600"></span>
-            <span class="w-6 h-0.5 bg-amber-700 mb-1 transition-all duration-300 group-hover:bg-amber-600"></span>
-            <span class="w-6 h-0.5 bg-amber-700 transition-all duration-300 group-hover:bg-amber-600"></span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12Zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM11 1h2v3h-2V1Zm0 19h2v3h-2v-3ZM3.515 4.929l1.414-1.414L7.05 5.636 5.636 7.05 3.515 4.929Zm13.435 13.435 1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121ZM19.071 3.515l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121ZM5.636 16.95l1.414 1.414-2.121 2.121-1.414-1.414 2.121-2.121ZM23 11v2h-3v-2h3ZM4 11v2H1v-2h3Z"
+              />
+            </svg>
+          </button>
         </div>
       </div>
-      
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-        <div class="px-4 py-4 space-y-4">
-          <a href="index.html#features" class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2">Features</a>
-          <a href="index.html#screenshots" class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2">Screenshots</a>
-          <a href="index.html#support" class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2">Support</a>
-          <a href="https://app.hafizpro.com/" target="_blank" class="block text-[#c49654] font-medium hover:text-amber-600 transition-colors duration-300 py-2">Web App</a>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Header Section -->
-    <header class="bg-gradient-to-br from-emerald-600 via-teal-600 to-blue-700 text-white py-20 relative overflow-hidden">
-        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
-            <p class="text-lg opacity-90">Last updated: February 19, 2026</p>
-        </div>
     </header>
 
-    <!-- Content Section -->
-    <main class="max-w-4xl mx-auto px-4 py-12 md:py-16">
-        <article class="bg-white rounded-2xl shadow-xl p-8 md:p-12 prose prose-lg max-w-none text-gray-700">
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Introduction</h2>
-                <p class="mb-4">
-                    Welcome to <strong>Hafiz Pro</strong> ("we," "our," or "us"). We are committed to protecting your privacy and ensuring you have a positive experience on our website and while using our mobile application.
-                </p>
-                <p>
-                    This Privacy Policy explains how we handle your information when you use our services. By using our app or website, you agree to the collection and use of information in accordance with this policy.
-                </p>
-            </section>
+    <main class="mx-auto max-w-3xl px-5 py-10 md:py-14">
+      <h1 class="font-display text-3xl font-bold text-strong md:text-4xl">
+        Privacy Policy
+      </h1>
+      <p class="mt-2 text-sm text-muted">Last updated: April 10, 2026</p>
 
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Information Collection and Use</h2>
-                
-                <h3 class="text-xl font-semibold text-gray-800 mb-3">Personal Data</h3>
-                <p class="mb-4">
-                    We believe in privacy by design. <strong>We do not collect any personal data</strong> that can identify you directly (such as your name, email address, or phone number) unless you voluntarily provide it to us (e.g., via support requests).
-                </p>
+      <article class="policy-prose mt-8">
+        <p>
+          This policy describes how
+          <strong class="text-strong">Hafiz Pro</strong> (“we”, “our”, or “the
+          app”) handles information when you use our mobile application and
+          related services. We aim to be transparent and to treat your data with
+          care.
+        </p>
 
-                <h3 class="text-xl font-semibold text-gray-800 mb-3">Usage Data & Analytics</h3>
-                <p class="mb-4">
-                    To improve our application, we may collect anonymous usage data. This data helps us understand how the app is used, identify bugs, and improve performance. This information is aggregated and does not identify individual users personally.
-                </p>
-                
-                <h3 class="text-xl font-semibold text-gray-800 mb-3">Local Storage</h3>
-                <p class="mb-4">
-                    All your progress, settings, and downloaded content (such as audio files) are stored locally on your device. We do not sync this data to any cloud servers unless explicitly stated or if you use platform-specific backup features (like iCloud or Google Drive backups managed by your OS).
-                </p>
-            </section>
+        <h2>1. Information we collect</h2>
+        <p>
+          Depending on how you use the app, we or our service providers may
+          process:
+        </p>
+        <ul>
+          <li>
+            <strong class="text-strong">Product and usage data</strong> — such
+            as app screens viewed, feature usage, and coarse technical data (for
+            example app version and device type) to understand how the app
+            performs and how we can improve it.
+          </li>
+          <li>
+            <strong class="text-strong">Identifiers used for analytics</strong>
+            — a pseudonymous identifier may be assigned by our analytics tools
+            so we can measure engagement over time without using your name or
+            email inside those tools.
+          </li>
+          <li>
+            <strong class="text-strong"
+              >Information you store on your device</strong
+            >
+            — reading progress, bookmarks, preferences, and similar data may be
+            stored locally on your device to power core features (for example
+            resuming where you left off).
+          </li>
+        </ul>
+        <p>
+          We do not require you to create an account to study the Quran in the
+          app. We do not ask for sensitive religious content beyond what you
+          choose to use inside the app as part of normal study.
+        </p>
 
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">App Permissions</h2>
-                <p class="mb-4">The Hafiz Pro app requires certain permissions to function correctly:</p>
-                <ul class="list-disc pl-6 space-y-2 mb-4">
-                    <li><strong>Internet Access:</strong> Required to download audio recitations and check for app updates.</li>
-                    <li><strong>Storage:</strong> Required to save downloaded audio files and your progress locally on your device so you can use the app offline.</li>
-                    <li><strong>Audio/Microphone:</strong> Although primarily for listening, future features involving recitation testing may request microphone access. This data is processed locally and is not uploaded to our servers.</li>
-                </ul>
-            </section>
+        <h2>2. How we use information</h2>
+        <p>We use the information above to:</p>
+        <ul>
+          <li>Operate, maintain, and improve Hafiz Pro;</li>
+          <li>Diagnose crashes and technical issues;</li>
+          <li>
+            Understand which features help learners so we can prioritize
+            improvements;
+          </li>
+          <li>Comply with applicable law where required.</li>
+        </ul>
 
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Third-Party Services</h2>
-                <p class="mb-4">We use open-source libraries and APIs to provide content, such as:</p>
-                <ul class="list-disc pl-6 space-y-2 mb-4">
-                    <li><strong>Quran API:</strong> To fetch Quranic text and audio metadata.</li>
-                    <li><strong>Audio Reciters:</strong> Audio files are streamed or downloaded from reputable Islamic sources.</li>
-                </ul>
-                <p>We do not share your data with third-party advertisers or marketing agencies.</p>
-            </section>
+        <h2>3. Analytics and third-party services</h2>
+        <p>
+          We may use third-party analytics providers to process usage data in
+          aggregated or pseudonymous form. Those providers process data under
+          their own privacy policies and act as processors or service providers
+          on our behalf. You can limit ad tracking or reset identifiers using
+          your device settings where available.
+        </p>
+        <p>
+          Distribution and platform services (for example
+          <strong class="text-strong">Apple App Store</strong> and
+          <strong class="text-strong">Google Play</strong>) collect information
+          according to their own policies when you install or update the app
+          through their stores.
+        </p>
 
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Children's Privacy</h2>
-                <p class="mb-4">
-                    Our services are safe for all ages. We do not knowingly collect personally identifiable information from children under 13. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to do necessary actions.
-                </p>
-            </section>
+        <h2>4. Sharing of information</h2>
+        <p>
+          We do not sell your personal information. We may share data with
+          vendors who help us run the app (such as analytics or infrastructure)
+          subject to appropriate safeguards, or when required by law, legal
+          process, or to protect the rights and safety of users.
+        </p>
 
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Changes to This Privacy Policy</h2>
-                <p class="mb-4">
-                    We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy Policy periodically for any changes.
-                </p>
-            </section>
+        <h2>5. Data retention</h2>
+        <p>
+          Analytics data may be retained for a limited period according to our
+          providers’ settings and our operational needs. Locally stored app data
+          remains on your device until you delete the app or clear app data from
+          your device settings, unless we sync or back up specific items in the
+          future in a way we describe in an updated policy.
+        </p>
 
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">Contact Us</h2>
-                <p class="mb-4">If you have any questions about this Privacy Policy, please contact us:</p>
-                <ul class="list-disc pl-6 space-y-2">
-                    <li>By email: <a href="mailto:bynalabs@gmail.com" class="text-teal-600 hover:text-teal-800 underline transition-colors">bynalabs@gmail.com</a></li>
-                    <li>By visiting our GitHub Issues page: <a href="https://github.com/bynalab/hafiz_test/issues" class="text-teal-600 hover:text-teal-800 underline transition-colors">https://github.com/bynalab/hafiz_test/issues</a></li>
-                </ul>
-            </section>
-        </article>
+        <h2>6. Security</h2>
+        <p>
+          We take reasonable measures to protect information handled by the app
+          and our services. No method of transmission or storage is completely
+          secure; we encourage you to keep your device software up to date.
+        </p>
+
+        <h2>7. Children’s privacy</h2>
+        <p>
+          Hafiz Pro is designed as an educational and devotional tool. We do not
+          knowingly collect personal information from children under the age
+          required for consent in your region for targeted analytics. If you
+          believe we have collected such information, please contact us so we
+          can delete it.
+        </p>
+
+        <h2>8. International users</h2>
+        <p>
+          If you use the app from outside your home country, information may be
+          processed in countries where we or our providers operate. Those
+          countries may have different data protection laws.
+        </p>
+
+        <h2>9. Your choices</h2>
+        <p>You may be able to:</p>
+        <ul>
+          <li>
+            Adjust permissions (microphone, notifications, etc.) in your device
+            settings;
+          </li>
+          <li>
+            Limit analytics or reset advertising identifiers where your platform
+            provides those controls;
+          </li>
+          <li>
+            Delete the app to remove locally stored data from your device.
+          </li>
+        </ul>
+
+        <h2>10. Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time. We will post the
+          new version on this page and update the “Last updated” date. Where
+          changes are material, we may provide additional notice in the app or
+          on our website.
+        </p>
+
+        <h2>11. Contact</h2>
+        <p>
+          For privacy-related questions or requests, please reach out through
+          the contact options listed on
+          <a
+            href="https://hafizpro.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            >https://hafizpro.com</a
+          >
+          or via the feedback channels available in the app settings.
+        </p>
+
+        <p class="mt-10 border-t border-hairline pt-6 text-sm">
+          <a
+            href="index.html"
+            class="font-button font-semibold no-underline hover:underline"
+            >← Back to Hafiz Pro</a
+          >
+          ·
+          <a
+            href="https://apps.apple.com/ng/app/hafiz-pro/id6759380253"
+            class="font-semibold no-underline hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+            >App Store</a
+          >
+          ·
+          <a
+            href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
+            class="font-semibold no-underline hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Google Play</a
+          >
+          ·
+          <a
+            href="https://app.hafizpro.com"
+            class="font-semibold no-underline hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Web app</a
+          >
+        </p>
+      </article>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 md:py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-          <div class="md:col-span-1">
-            <div class="flex items-center gap-2 text-xl font-bold mb-4">
-              <i class="fas fa-quran text-emerald-400"></i>
-              <span>HafizPro</span>
-            </div>
-            <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-              Empowering Muslims worldwide to memorize the Quran with ease and
-              consistency.
-            </p>
-            <div class="flex gap-4">
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-emerald-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-emerald-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-emerald-600 hover:text-white transition-all duration-300"
-              >
-                <i class="fas fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Product</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="index.html#features"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Features</a
-                >
-              </li>
-              <li>
-                <a
-                  href="index.html#screenshots"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Screenshots</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://github.com/bynalab/hafiz_test"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Open Source</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Support</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Contact</a
-                >
-              </li>
-              <li>
-                <a
-                  href="privacy-policy.html"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Privacy Policy</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="text-lg font-semibold mb-4">Download</h4>
-            <ul class="space-y-2">
-              <li>
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.bynalab.hafiz_test"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Android APK</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onclick="alert('Coming Soon')"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >iOS App Store</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://app.hafizpro.com/"
-                  target="_blank"
-                  class="text-gray-300 hover:text-white transition-colors duration-300"
-                  >Web App</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="border-t border-gray-800 pt-8 text-center mt-12">
-          <p class="text-gray-400 mb-2">
-            &copy; <span id="year">2026</span> Hafiz Pro. All rights reserved.
-          </p>
-          <p class="text-gray-400">
-            Built with ❤️ by the
-            <a
-              href="https://x.com/byna001"
-              target="_blank"
-              class="text-gray-400 hover:text-white"
-              >Bynalab</a
-            >
-          </p>
-        </div>
-      </div>
-    </footer>
-
     <script>
-        // Update copyright year
-        document.getElementById('year').textContent = new Date().getFullYear();
+      (function () {
+        var root = document.documentElement;
+        var metaTheme = document.getElementById("meta-theme-color");
+        var themeToggle = document.getElementById("theme-toggle");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+        var storedTheme = localStorage.getItem("hafiz-preview-theme");
 
-        // Mobile menu toggle
-        document.addEventListener("DOMContentLoaded", function () {
-            const mobileToggle = document.getElementById("mobile-menu-toggle");
-            const mobileMenu = document.getElementById("mobile-menu");
+        function setTheme(theme) {
+          root.setAttribute("data-theme", theme);
+          metaTheme.setAttribute(
+            "content",
+            theme === "dark" ? "#0E0E0E" : "#FFFFFF",
+          );
+          localStorage.setItem("hafiz-preview-theme", theme);
+        }
 
-            if (mobileToggle && mobileMenu) {
-                mobileToggle.addEventListener("click", function () {
-                    mobileMenu.classList.toggle("hidden");
-                });
-            }
+        setTheme(storedTheme || (prefersDark.matches ? "dark" : "light"));
+
+        themeToggle.addEventListener("click", function () {
+          root.classList.add("theme-transition");
+          themeToggle.classList.add("spin");
+          var next =
+            root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          setTheme(next);
+          window.setTimeout(function () {
+            root.classList.remove("theme-transition");
+            themeToggle.classList.remove("spin");
+          }, 320);
         });
+      })();
     </script>
   </body>
 </html>
